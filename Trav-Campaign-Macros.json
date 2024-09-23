@@ -1,0 +1,825 @@
+{
+    "schema_version": 2,
+    "macros": [
+        {
+            "attributes": {
+                "action": "!rt[Delimiter:BR|PrefaceUniqueSpace|ShowIcons|IconLabel:Off] &{template:default} {{name=👨‍👩‍👧‍👦 Ally, Contact, Rival, Enemy 👨‍👩‍👧‍👦}}  {{Who=[[1t[Trav-Contact-Rival]]]  }}   {{ Quirk=[[1t[Trav-Quirk]]]  }} \n\n",
+                "istokenaction": true,
+                "name": "👨‍👩‍👧‍👦ACRE",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!dead  \n",
+                "istokenaction": false,
+                "name": "❌KO/KIA",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!purple\n! assign and increment purple dot\n\n&{template:default}{{name= 🟣       Boon       🟣}}{{Next Roll= should be made with a Boon (Advantage) }}\n\n",
+                "istokenaction": false,
+                "name": "🟣Boon",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "! token-mod --set statusmarkers|!yellow\n! set/clear yellow dot\n\n\n!script {{\n   +++TravellerMg2eLib+++\n\n      -->LibTrav_CardHeader|a;b\n\n  --#sourceToken|@{selected|token_id}\n\n           --#title|🟡 Hit! 🟡\n\n     -->LibTrav_ToggleTokenStatusMarker|StatusOnOff;\"yellow\"\n     --/StatusOnOff| [&StatusOnOff]\n\n      --?[&StatusOnOff] -eq \"Off\" |[\n           --+Cleared 🟡 Status|\n      --]|[\n\n            --/Healthy| Wound DM+0, No Dot\n            --+🟡|Hit (but not Impaired)\n      --]|\n\n\n}}\n",
+                "istokenaction": false,
+                "name": "🟡Hit",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!act +1 1  --End Round #\n",
+                "istokenaction": false,
+                "name": "⌛+EOR",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "! Quick Reference Macro\n\n&{template:default} {{name=🔖 Traveller Quick Reference 🔖}}   {{ .= ***--- Rule Books & Setting Info ---***  }} {{📔=[Core Rules](https://drive.google.com/file/d/1HltJAKfT2bPLEn1Xy18tTo3g8Ol-qpdT/view?usp=sharing)   🖥️ [Player's Guide](https://docs.google.com/document/d/1MdMvUo1T25X0BtpHJtoqK8VLTKFhLFgGeBxVJDV5kyQ/edit?usp=sharing)  }} {{🛒=[Supply Catalog](https://drive.google.com/file/d/14_VvLfO9V_KL6sDDy3s26TGk-fy8v6wX/view?usp=sharing)   >> [Shop Now!](`#🛒Shop) << \nShawn's📦 [Packages](https://drive.google.com/file/d/1LSbPrX2yg2qHsTKAHX3xrbtV8jZ5-NuQ/view?usp=sharing) 🦁 [Gear Sheet](https://1drv.ms/x/s!ArL_-RV6Mnupg8J3qkr4_r7Hwwr54w?e=gpdqCv)  }}   {{ ..= ***--- Reference Tools ---***  }}  {{ 🪐=**Trav**  [🌌Map](https://travellermap.com/?p=-99.002!18.801!6.85&options=58359),  [📖Wiki](https://wiki.travellerrpg.com/Main_Page),   [📅Calendar](`#📅Cal) }} {{  🌎=**UWP:** A:10, B:11, C:12, D:13, E:14, F:15 }}  {{ ...= ***--- Combat Reference Tables ---***  }}    {{⚔️=**Combat** [Options](`#Combat-Options), [DMs](`#Combat-DMs), \n🔫 [Weapon Traits](`#Weapon-Traits) 💣[Grenades](`#Grenade!), \n💥 [Blast Template](http://journal.roll20.net/handout/-Nkwpf6hs4TM8laRNIBX)  }} {{!= ***--- Rule Summary Chat Tables ---*** }}  {{🎒=  [Loadout and Encumbrance](`#Loadout) }}  {{⏲️=[Skill Time Frames and Task Chains](`#Time-Task-Chain-DMs)  }} {{🪙=[Benny and Gambit Usage](`#BennyUse) }} {{☄️ =[Effects of Gravity](`#Gravity) }}  {{💾=[Expert Computer Programs](`#Comp-Expert)  }}   {{ 🖲️=[Sensor Operations](`#SensOps)  }} {{ !!= ***--- Healing and Improvement ---***  }}   {{🤕=[Healing and Recovery](`#🤕Heal) }}  {{🏋️= [Training Characteristics and  Skills](`#🏋️Training) }}   {{ !!!= ***--- Roll Dice ---***  }}   {{👩‍🚀= **Roll** [NPC Action](`#👩‍🚀NPC) or  [Vehicle Action](`##✈️Veh)}}{{🍀= **Roll** [2D w/Boon](`#⚄⚄Boon) **||** [2D w/Bane](`#⚀⚀Bane) }}  {{🎲=  **Roll** [1D](`#🎲)   **||** [2D](`#🎲🎲) **||** [3D](`#🎲🎲🎲) **||**  [ D66](`#⚅⚅D66)  }}    {{ -= ***--- Character Generation ---***  }}  {{ 🔢 = [Roll New Character Stats](`#Roll-Stats)  }}    {{👩🏻‍🚀=[Character Generation Worksheet](https://docs.google.com/document/d/1gRPH2huVGNeon4iHNs7VrDaK2YuMsNPEvXFgRsDxtRY/edit?usp=sharing) }}  !  {{ 📼= [\"How to Play Traveller\" Videos](https://www.youtube.com/playlist?list=PL25p5gPY6qKVUg6ys5N1oRlsBI7DTByyI) }}  !   {{🚶🏾‍♀️=[Combat Walk Thru](https://drive.google.com/file/d/18BGDKqzTs8lpvHQ-BTvGqPuOgoo2tzgu/view?usp=sharing) }}   \n\n\n\n!  unused  📘📙📗📓⚒️📄✨🌠\n\n\n\n!  {{🕝=[Starport Fuel, Dock Time & Costs](`#Starport) }}  {{🦘 =[Transit Time to/from Jump](https://journal.roll20.net/handout/-NdIWBsn_72lsrb0fY6i) }} \n\n! [command name]( `#global macro to call) back tic is key\n\n! {{doc= [description](http://journal.roll20.net/handout/)}} {{doc= [description](http://journal.roll20.net/handout/)}} {{doc= [description](http://journal.roll20.net/handout/)}} {{doc= [description](http://journal.roll20.net/handout/)}}\n\n! emoji site:  https://unicode.org/emoji/charts/full-emoji-list.html\n\n\n\n! to find handout url to put in link =  use the External Journal.  The external Journal is in the Game -> Content drop down\n! You can copy a link from there:\n! https://app.roll20.net/campaigns/journal/NUMBER/handout/\n! Take the  number off the end of it and put it onto the end of this after handout/  \n! [button name](http://journal.roll20.net/handout/)\n\n\n",
+                "istokenaction": true,
+                "name": "📓Ref",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "!group-init --clear\n!act +1 1  --End Round #",
+                "istokenaction": false,
+                "name": "⌛ClearTO",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!pink\n! increment pink counter dot\n\n&{template:default}{{name= 🌸       Bane       🌸}}{{Next Roll= should be made with a Bane (Disadvantage) }}",
+                "istokenaction": false,
+                "name": "🌸Bane",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!brown\n! toggle Reaction\n\n&{template:default}{{name= 🟤 Dodge, Parry, Dive for Cover 🟤}}   {{Dodge = ***Attacker*** subtracts target's DEX DM or Ath(DEX) Skill from attacks\n***Defender*** suffers DM-1 per Dodge on their next set of Actions \n***Notes:*** Each attack is Dodged separately.  Ranged or Melee OK  }} {{Parry = ***Attacker*** subtract target Melee Skill from attack. Shield adds DM-1\n***Defender*** suffers DM-1 per Parry on their next set of Actions\n***Notes:*** Each attack is Parried separately.   Melee Only}}   {{Dive for Cover = ***Attacker***  DM-2 if Target adjacent to Cover, else  goes prone DM-1\n***Defender*** loses next set of Actions\n***Note:*** Ranged Only. Penalty applies to all Attackers }}  \n",
+                "istokenaction": false,
+                "name": "🟤React",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!green\n\n! toggle green",
+                "istokenaction": false,
+                "name": "🟢",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!blue\n! Toggle Fatigue\n\n&{template:default}{{name= 🔵 &nbsp; &nbsp; &nbsp; Fatigued  &nbsp; &nbsp; &nbsp; 🔵}}  {{Target = DM-2 on all Checks}} {{Removed=by drugs, treatment, or rest}}   ",
+                "istokenaction": false,
+                "name": "🔵Fatigue",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#b6d7a8",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|=blue|-blue\n! clear All markers from token",
+                "istokenaction": false,
+                "name": "🧽CLEAR",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "\n! ORIGINAL MUDSHARK CHARACTERS\n\n!Spawn {{\n   --name|Parker Peters\n   --qty| 1\n   --offset| 1,-1\n   --order | toFront\n}}\n!Spawn {{\n   --name|Oliver Perry (Steve)\n   --qty| 1\n   --offset| -5,-1\n   --order | toFront\n}}\n!Spawn {{\n   --name|Rukhtahakhto Ekho' hoa Ua’hwarls’e hlKhehkhtyeiteyahahtateisiyu\n   --qty| 1\n   --offset| 5,-1\n   --order | toFront\n}}\n\n!Spawn {{\n   --name|HFEIRL LAKH Ki` \"Red\"  (Shawn)\n   --qty| 1\n   --offset| -3,-1\n   --order | toFront\n}}\n!Spawn {{\n   --name|Mara Kelly (Richard)\n   --qty| 1\n   --offset| -1,-1\n   --order | toFront\n}}\n!Spawn {{\n   --name|Rense Fenner\n   --qty| 1\n   --offset| 3,-1\n   --order | toFront\n}}\n\n\n! NEW SWAMP FOX CHARACTERS\n\n!Spawn {{\n   --name|Maria Swift\n   --qty| 1\n   --offset| 1,-3\n   --order | toFront\n}}\n!Spawn {{\n   --name|John Reisman (Steve)\n   --qty| 1\n   --offset| -5,-3\n   --order | toFront\n}}\n!Spawn {{\n   --name|wildcard\n   --qty| 1\n   --offset| 5,-3\n   --order | toFront\n}}\n\n!Spawn {{\n   --name|Glib (Shawn)\n   --qty| 1\n   --offset| -3,-3\n   --order | toFront\n}}\n!Spawn {{\n   --name|Rraenna Akgo (Richard)\n   --qty| 1\n   --offset| -1,-3\n   --order | toFront\n}}\n!Spawn {{\n   --name|Thomas (Will)\n   --qty| 1\n   --offset| 3,-3\n   --order | toFront\n}}\n\n\n\n\n\n! See faces macro for how to update NPC tokens\n! Spawn {{\n!    --name|Campaign NPCs\n!    --qty| 1\n!    --offset| 0,-2\n!    --side|1\n!    --placement|row\n!    --order | toFront\n! }}\n\n",
+                "istokenaction": false,
+                "name": "Spawn-Tokens",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#ff9900",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "/w gm SELECT token to \"re-face\".  Click NAME in the Faces interface to rename token.  Click IMAGE to change the face.  \n/w gm To add a new NPC, add a token to the NPC-Tokens table, name the table entry.\n!faces NPC-Tokens\n",
+                "istokenaction": false,
+                "name": "Faces",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set aura1_radius| aura2_radius| showplayers_aura2|no showplayers_aura1|no",
+                "istokenaction": false,
+                "name": "No-Aura",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#ff9900",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set aura1_radius|0.05 aura1_color|FFFFFF aura2_radius|0.07 aura2_color|?{Color|Grey,c0c0c0|Yellow,FFFF00|Red,FF0000|Blue,87CEEB|Green,00FF00|Purple,800080} showplayers_aura1|yes  showplayers_aura2|yes \n\n\n! gray\n! token-mod --set aura1_radius|0.05 aura1_color|FFFFFF aura2_radius|0.07 aura2_color|c0c0c0  showplayers_aura1|yes  showplayers_aura2|yes \n\n! yellow\n! token-mod --set aura2_radius|0.07 aura2_color|FFFF00  \n\n! red\n! token-mod --set aura2_radius|0.07 aura2_color|FF0000  \n\n! green\n! token-mod --set aura2_radius|0.07 aura2_color|00FF00 \n\n!  sky blue\n! token-mod --set aura2_radius|0.07 aura2_color|87CEEB \n\n! purple\n! token-mod --set aura2_radius|0.07 aura2_color|800080 \n",
+                "istokenaction": false,
+                "name": "Token-Stand",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#ff9900",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "\n!rt[Delimiter:BR|PrefaceUniqueSpace|ShowIcons|IconLabel:Off] /w gm &{template:default} {{name=Traveller Names}}  {{-=*** Humaniti Names*** }}  {{HF=[[1t[Humaniti-First-Names]]], [[1t[Humaniti-First-Names]]], [[1t[Humaniti-First-Names]]], [[1t[Humaniti-First-Names]]]      }}  {{HL=[[1t[Humaniti-Last-Names]]], [[1t[Humaniti-Last-Names]]], [[1t[Humaniti-Last-Names]]], [[1t[Humaniti-Last-Names]]]      }}  {{-=*** Aslan Names*** }}  {{A=[[1t[Aslan-Names]]], [[1t[Aslan-Names]]]      }} {{-=*** Vargr Names*** }}  {{V=[[1t[Vargr-Names]]], [[1t[Vargr-Names]]]      }}   {{-=*** Ship Names*** }}  {{S=[[1t[Trav-Ship-Names]]], [[1t[Trav-Ship-Names]]]      }}      {{-=*** Star Bar Names*** }}  {{B=[[1t[Trav-Star-Bar-Names]]], [[1t[Trav-Star-Bar-Names]]]      }} ",
+                "istokenaction": false,
+                "name": "Name",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#ff9900",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "! roll init and add selected token to turn order, chat is to gm only\n\n!group-init --bonus [[@{selected|bar3}d1+?{Mod?|0}]] \n\n\n! if you wanted to re-roll init for everything in the turn order:\n! group-init --reroll [bonus]",
+                "istokenaction": false,
+                "name": "⌛Init",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "! Characteristic Generation\n\n!script {{\n\n--/|TITLE CARD DISPLAY\n  --#titlecardbackground|#000000\n  --#tableBorder|3px solid #8B0000;\n  --#evenrowbackground|#D3D3D3\n  --#oddrowbackground|#E5E4E2\n  --#titleFontColor|#DC143C\n  --#noMinMaxHighlight|1\n  --#noRollHighlight|1\n  --#title|Characteristic Generation for: [&SendingPlayerName]\n  --#leftsub|Distribute these 6 among your Stats\n\n--/|Gen Stats and DMs\n  --=Roll1| 3d6kh2\n  --=Roll1| 2d6\n  --=Roll2| 3d6kh2\n  --=Roll2| 2d6\n  --=Roll3| 2d6\n  --=Roll4| 2d6\n  --=Roll5| 2d6\n  --=Roll6| 2d6\n  --=StatSum | [$Roll1] + [$Roll2] + [$Roll3] + [$Roll4] + [$Roll5] + [$Roll6] \n\n  -->CalcDM|[$Roll1];\n  -->CalcDM|[$Roll2];\n  -->CalcDM|[$Roll3];\n  -->CalcDM|[$Roll4];\n  -->CalcDM|[$Roll5];\n  -->CalcDM|[$Roll6];\n  --+|[c]The Sum of your Characteristics is:[b][$StatSum][/b][/c]\n\n--:PROVIDE A BUTTON FOR ROLLING DAMAGE|\n   --?[$StatSum] -le 41|[\n     --+|[c]which is less than 42,[br]you may reroll the whole set if you choose.[/c]\n     --+[c][Click to Re-Roll Characteristics?](`#Roll-Stats)[/c]|\n   --]|\n\n  --X|\n\n  --:CalcDM|\n    --?[%1%] -lt 1|[\n      --+|[b][c][#f00][%1%](-3)[/#][/c][/b]\n      --<|  \n    --]|\n    --?[%1%] -lt 3|[\n      --+|[b][c][#f00][%1%](-2)[/#][/c][/b]\n      --<|  \n    --]|\n    --?[%1%] -lt 6|[\n      --+|[b][c][#f00][%1%](-1)[/#][/c][/b]\n      --<|  \n    --]|\n    --?[%1%] -lt 9|[\n      --+|[b][c][#000][%1%](+0)[/#][/c][/b]\n      --<|  \n    --]|\n    --?[%1%] -lt 12|[\n      --+|[b][c][#000][%1%](+1)[/#][/c][/b]\n      --<|  \n    --]|\n    --?[%1%] -lt 15|[\n      --+|[b][c][#000][%1%](+2)[/#][/c][/b]\n      --<|  \n    --]|\n    --?[%1%] -ge 15|[\n      --+|[b][c][#000][%1%](+3)[/#][/c][/b]\n      --<|  \n    --]|\n\n }}",
+                "istokenaction": false,
+                "name": "Roll-Stats",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "**Normal** 2D = [[2d6]]",
+                "istokenaction": false,
+                "name": "🎲🎲",
+                "visibleto": "all"
+            },
+            "macrobar": {
+                "color": "#dd7e6b",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!archery-target\n! assign and increment target for aiming mod\n\n&{template:default}{{name= 🎯       Aiming       🎯}}{{DM+1=per consecutive Minor Action spent Aiming a Ranged Attack (Max DM+6}}\n",
+                "istokenaction": false,
+                "name": "🎯Aim",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!broken-shield:2\n! assign shield for cover\n\n\n&{template:default}{{name= 🛡️       Under Cover       🛡️ }}{{Attacker=DM-2 vs. Targets in Cover}}  {{Defender=may ***Hide in Cover*** to get Armor protection of cover instead but cannot take Attack Actions}} {{Hide in Cover=**Armor Bonus:** Vegetation +2; Tree/Crate/Int Wall +6; Stone Wall +8; Vehicle +10; Armor Veh +15; Fortification/Bulkhead +20}}",
+                "istokenaction": false,
+                "name": "🛡️Cover",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!radioactive\n! assign radioactive\n\n&{template:default}{{name= ☢️       Radiation       ☢️}}{{Rad= exposure accumulates over time and causes damage and permanent effects unless treated with anti-radiation drugs.}}",
+                "istokenaction": false,
+                "name": "☢️Rads",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#b6d7a8",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!death-zone\n! assign death-zone for poison\n\n\n&{template:default}{{name= ☠️       Poison       ☠️}}{{END= Check on Interval or suffer Damage or other Effects}}",
+                "istokenaction": false,
+                "name": "☠️Poison",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#b6d7a8",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!bleeding-eye\n! assign bleeding eye for disease\n\n&{template:default}{{name= ☣️       Disease       ☣️}}{{END= Check on Interval or suffer Damage}}",
+                "istokenaction": false,
+                "name": "☣️Disease",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#b6d7a8",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!back-pain:1\n! assign back pain for prone\n\n&{template:default}{{name= 🧎🏻 &nbsp; &nbsp; &nbsp; Prone  &nbsp; &nbsp; &nbsp; 🧎🏻}}  {{Attacker=DM-1 vs. Prone}} {{Defender=Crawling Prone at 1/4 Move}}   ",
+                "istokenaction": false,
+                "name": "🧎🏻Prone",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!fist\n! assign fist for grappled\n\n&{template:default}{{name= ✊ &nbsp; &nbsp; &nbsp; Grappled  &nbsp; &nbsp; &nbsp; ✊}}  {{To Grapple = make an opposed Melee (unarmed) check using either STR or DEX DM. }} {{Winner =May choose one of the following:}} {{1.= Force opponent prone }}  {{2.= Disarm opponent. If Effect is 6+, they may take opponent’s weapon. }}  {{3.= Throw opponent 1Dm, causing 1D damage and end the grapple.}} {{4.= Inflict damage of 2 + the Effect of the Melee check ignores armor. }} {{ 5.= Inflict damage using a pistol or small blade weapon. }} {{6.= Escape and move away (normal move action), ending the grapple.}} {{ 7.=Drag their opponent up to 3m. }}  {{8.= Continue or maintain the grapple with no other effect. }}\n",
+                "istokenaction": false,
+                "name": "🤼Grappled",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#b6d7a8",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "! Damage Rolls\n\n!script {{\n\n\n--/|LOAD LIRARY FUNCTIONS\n+++TravellerMg2eLib+++\n\n--/|SET SCRIPT SPECIFIC CARD STYLE\n    -->LibTrav_CardHeader|a;b\n\n--/|USER INPUT\n    --=NumRolls|?{# Rolls?|1}\n    --=EffectMod|?{Effect Damage DM?|0}\n\n--/|SET TITLES\n    --#title|Rolling a Pile of D6's \n    --#leftsub| #Rolls: [$NumRolls],  Effect Damage DM: [$EffectMod] \n\n--/|create a string variable with just a space in it   [&SP] \n    --&SP| \n    --/SP = >[&SP]<    | (debug)\n    --+[F:Courier New:16]##:[&SP]1D[/F][F:Courier New:12][&SP][/F][F:Courier New:16][&SP]2D[&SP][/F][F:Courier New:8][&SP][/F][F:Courier New:16]3D[/F][F:Courier New:20][&SP][/F][F:Courier New:16]4D[/F][F:Courier New:24][&SP][/F][F:Courier New:16]5D[/F][F:Courier New:24][&SP][/F][F:Courier New:16]6D[/F][F:Courier New:24][&SP][/F][F:Courier New:16]7D[/F][F:Courier New:22][&SP][/F][F:Courier New:16]8D             | [/F]\n\n  --/|LOOP THROUGH ROLLS OF  DAMAGE\n    --%LoopCounter|1;[$NumRolls];1\n        --/| DAMAGE\n        --=1D| 1d6 + [$EffectMod]\n        --=2D| 2d6 + [$EffectMod] \n        --=3D| 3d6 + [$EffectMod]\n        --=4D| 4d6 + [$EffectMod]\n        --=5D| 5d6 + [$EffectMod]\n        --=6D| 6d6 + [$EffectMod]\n        --=7D| 7d6 + [$EffectMod]\n        --=8D| 8d6 + [$EffectMod]\n\n    --/| OUTPUT\n      --?[&LoopCounter] -lt  10 |[\n          --+[F:Courier New:16]0[&LoopCounter]:[/F]|[F:Courier New:16][$1D][$2D][$3D][$4D][$5D][$6D][$7D][$8D]  [/F]\n      --]|[\n          --+[F:Courier New:16] [&LoopCounter]:[/F]|[F:Courier New:16][$1D][$2D][$3D][$4D][$5D][$6D][$7D][$8D]  [/F]\n      --]|\n\n  --%|\n}}\n",
+                "istokenaction": false,
+                "name": "💣Damage-D6s",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "**Boon** 2D (3d6kh2) = [[3d6kh2]]",
+                "istokenaction": false,
+                "name": "⚄⚄Boon",
+                "visibleto": "all"
+            },
+            "macrobar": {
+                "color": "#f1c232",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "**Bane** 2D (3d6kl2) = [[3d6kl2]]",
+                "istokenaction": false,
+                "name": "⚀⚀Bane",
+                "visibleto": "all"
+            },
+            "macrobar": {
+                "color": "#f1c232",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name=﻿🔸﻿Loadout and ENC}}{{ Baseline:=Ath(STR) + Ath(END) + STR + END (in kg)}}  {{LIGHT:=Baseline x1 = **DM+0**}} {{MEDIUM:=Baseline x2 = **DM-1 on all physical actions**}}  {{HEAVY:=Baseline x3 = **DM-2 on all physical actions**}}  {{Monitor Load=add an item of gear to their sheet as you use it, compare to Load Limits, apply DM}}  {{Gear Choices= are  limited by the planet's Law Level rating }}  {{Smuggling=illegal weapons through customs when entering or leaving a planet is possible, but risky}}\n\n",
+                "istokenaction": false,
+                "name": "Loadout",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name=﻿🔸Benny-Gambit Usage}}{{ Session Start=1 Benny per PC + 3 Shared Gambits }}  {{Gain 1 Gambit=Tell a Story at Captain's Table}}  {{SPEND=**A BENNY OR GAMBIT TO  ...** }}  {{Throw=with a Boon }}  {{Add=a DM+1 to any Throw after rolling}}  {{Reroll= any single Throw: Attribute, Task, Initiative, Tables, Damage  }}  {{Invoke=a Flashback: Rewind back to some action you took as part of planning the mission. Can't undo facts already established by fiction. May require Task Throw or Credits.  }}  {{Regain=Consciousness (when 2 Stats at 0)  }}\n\n\n\n",
+                "istokenaction": false,
+                "name": "BennyUse",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default} {{name=🔸1 Study Period = 6 Weeks}}  {{SKILL= **Training via Study Periods**}} {{Choose:= A ***specific*** Skill to study }}   {{Target:= **Tgt**:#Periods = **0**:1; **1**:1; **2**:2 **3**:3, ... based on ***target*** skill level}}  {{ Roll:= EDU - (Current Level, Non-Athletics)  }}   {{Ath Roll:= Use STR|DEX|END, not EDU  }}     {{Fail:= Study Effect more weeks and Reroll }}  {{Pass:=Gain Level 0 or Level+1 in Skill }}     {{Max:=Skill Levels =  (INT + EDU) x 3  }}  {{Cannot= Train or Learn Jack of All Trades}}  {{No Skill=May be Trained above Level 6}}    {{-------= ------------------------------}}        {{STAT= **Training via Study Periods**}} {{Pick:= A ***specific*** STAT to study }} {{Physical:= ***Cur***:#Prd  **1-5**:1; **6-8**:2; **9-11**:3; **12-14**:4  based on ***current*** stat level}} {{ Mental:= #Periods 2 x Physical Periods }}  {{ Throw:= 2D + 7 - (Current STAT) }}  {{Failure:= Study Effect more weeks and Reroll }}  {{Success:=Gain +1 in Stat, +2 if Effect 6+ }}    {{SOC= Cannot be Trained}}  {{No Stat=May be Trained above 15 }}\n\n\n\n! HTML in Chat trick here:  https://app.roll20.net/forum/post/5899495/roll20-tips-and-tricks-innovative-solutions-to-common-problems/?pageforid=9119412#post-9119412\n\n",
+                "istokenaction": true,
+                "name": "🏋️Training",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "**D66** = [[d6cs8cf0]][[d6cs8cf0]]\n\n\n",
+                "istokenaction": false,
+                "name": "⚅⚅D66",
+                "visibleto": "all"
+            },
+            "macrobar": {
+                "color": "#cc0000",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "! show campaign calendar (start of campaign to Today + 6 weeks)\n! can add --details --sparse to the end to print only days with events\n!cal   --between|359-1102|+6w\n\n! set current date:   \n!cal --set|068-1104\n\n! set maint reminders for the year\n! cal --note|029-1104|all|MAINT DUE\n! cal --note|057-1104|all|MAINT DUE\n! cal --note|085-1104|all|MAINT DUE\n! cal --note|113-1104|all|MAINT DUE\n! cal --note|141-1104|all|MAINT DUE\n! cal --note|169-1104|all|MAINT DUE\n! cal --note|197-1104|all|MAINT DUE\n! cal --note|225-1104|all|MAINT DUE\n! cal --note|253-1104|all|MAINT DUE\n! cal --note|281-1104|all|MAINT DUE\n! cal --note|309-1104|all|MAINT DUE\n! cal --note|337-1104|all|MAINT DUE\n! cal --note|365-1104|all|MAINT DUE\n\n\n\n\n\n\n\n\n! cal  --show-5week\n! add --details --sparse to just list days with events\n! | = |\n\n\n\n! add --details --sparse to just list days with events\n\n! cal --set|359-1102\n\n! Advance current date by 1 week\n! cal --set|+1w   \n\n! help\n! cal --help\n\n! show the whole year\n! cal --show-year\n\n! show +/- 2 weeks \n! cal --show-5week\n\n! set note on particular day for all to see (payday & maint every 28 days)\n\n\n! cal --note|197-1103|all|Crew Payday and Ship Maintenance \n! cal --note|225-1103|all|Crew Payday and Ship Maintenance \n\n\n\n! cal --note|xxx-1103|all|Mudshark Jumps from XX to YY \n! cal --note|xxx-1103|all|Mark 1 week of Training  \n! cal --note|xxx-1103|all|Mudshark Arrives in XX \n! cal --note|xxx-1103|all|Crew Payday and Ship Maintenance \n! cal --note|202-1103|all|Emperor Strephon's Birthday ",
+                "istokenaction": true,
+                "name": "📅Cal",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name=Grenades! Ath(DEX), R:5/20/40, 0.5kg }}{{Aerosol= TL9, Cr15, Eff: Blast 9, -10 Laser Dam, 1Dx3 rnd w/o wind}}{{EMP= TL9, Cr100, Eff: Blast 6, Electronics Down 1D min If not Shield/Hard, @TL6- Fried, @TL12+ immune}}{{Frag= TL6, Cr30 Eff: 5D, Blast 9 }}{{Chem= TL5, Cr50 Eff: 1D/rnd in, Blast 9,  END DM-4, if Non-lethal = Stun, Cloud}}{{Incendi= TL7, Cr75 Eff: 2D, Blast 3, Fire}} {{Smoke=TL6, Cr15 Eff: Blast 9, DM-2 on targets in/out, IR bypasses, Cloud}}{{Stun(FB)= TL7, Cr30, Eff: 3D, Blast 9, Stun}}{{Therm Smoke=TL7, Cr30, Eff: Blast 9, DM-2 on targets in/out, Blocks IR, Cloud}}{{Tranq Gas=TL8, Cr75 Eff: Blast 9, END DM-2 or KO, Cloud}}  {{Plasma= TL16, Cr500 Eff: 8D, Blast 6 }} {{Neuro-toxin= TL9 ,Cr250, Banned Eff: 1D INT/rnd exposed, Blast 9, END DM-4, Cloud}} {{-------= ***------ Grenade Traits ------***}}    {{Blast= Roll damage on each target within Blast meters. Cannot Dodge but may ***Dive for Cover*** if cover is within 1.5m. Cover adds Armor if between target and center of weapon’s Blast}}  {{Cloud=Dissipates in 1Dx3 rounds w/o wind.  Targets with Respirators or Sealed Suits are immune }}   {{Fire= Sets target on fire, causing weapon damage every round after initial attack. Fire extinguished on 8+, rolled at the start of every round. Use Significant Action to extinguish the fire, w/DEX check. DM+2 if using firefighting equipment. }} {{Stun=Non-lethal. Damages only END. If END reduced to 0 (after Armor), KO for #Rounds = damage in excess of END. Damage heals w/1 hr of rest.}}\n\n\n! {{Plasma= TL16, Cr500 Eff: 8D, Blast 6 }} {{Neuro-toxin= TL9 ,Cr250, Banned Eff: 1D INT/rnd exposed, Blast 9, END DM-4, Cloud}}",
+                "istokenaction": false,
+                "name": "Grenade!",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#000000",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name=Weapon Traits}} {{Auto = Choose Single, Burst, or Full Auto: **Single:** Attacks are made using the normal combat rules. **Burst: **Add the Auto score to damage. This uses a number of rounds equal to the Auto score.   Cannot Aim or use Scope.  **Full Auto: ** Make a number of attacks equal to the Auto score. These attacks can be made against separate targets so long as they are all within 6m. Uses 3*Auto rounds. Cannot Aim or use Scope. }}  {{Blast X= Roll damage on each target within Blast meters. Cannot Dodge but may Dive for Cover if cover is within 1.5m. Cover adds Armor if it lies between a target and center of a weapon’s Blast.}}  {{Bulky= Powerful recoil or very heavy.  Attack DM = 1-STR Mod  }}  {{Bulky, Very=Huge recoil or very heavy.  Attack DM = 2-STR Mod  }} {{Dang-erous= Explodes on Effect -5 Attack roll doing damage to operator and the weapon is rendered inoperable.  }}  {{Dang-erous, Very= Explodes on Effect -3 Attack roll doing damage to operator and the weapon is rendered inoperable.  }}   {{Fire=  Sets target on fire, causing weapon damage every round after initial attack. Fire extinguished on 8+, rolled at the start of every round. Use Significant Action to extinguish the fire, w/DEX check. DM+2 if using firefighting equipment. }}  {{Radi-ation:=Target gets 2Dx20 rads.  See Core pg 81 for radiation details.  }}   {{Scope= Attacks made at a range greater than 100m are not Extreme range if Traveller aims before shooting.  }}  {{Silent= Attempts to detect the source of this sound suffer DM-6.  }}  {{Smart= Attack with DM+(TL difference between self and target) usually armor or vehicle.  Can also home in on comms devices, computers and weapons. Min DM+1, max DM+6.  }}  {{Smash= Attack cannot be Parried  }}   {{Stun=Non-lethal. Damages only END. If END reduced to 0 (after Armor), KO for #Rounds = damage in excess of END. Damage heals w/1 hr of rest.}}   {{Zero-G=Used in zero gravity  without requiring an Athletics (dexterity) check. }}",
+                "istokenaction": false,
+                "name": "Weapon-Traits",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#000000",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "! trav-aid --shop --uwp B789439-C --name test\n\n!trav-aid --shop --uwp @{ScriptCards_Storage|SCS_-CurrentSystemUWPOnly} --name @{ScriptCards_Storage|SCS_-CurrentSystemName}\n\n\n\n\n\n",
+                "istokenaction": true,
+                "name": "🛒Shop",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name=Skill Time Frames and Task Chains}}{{TimeFrames= ---------------------}}  {{1D Sec= Shoot, Hit, Move }}  {{1Dx6s =First Aid (6s = 1 Combat Round) }} {{1D x 10s =  Reroute Power}}{{1D min=Simple Task, Quick Search }} {{1D x 10m = Complex Task, Thorough Search}} {{ 1D hr  =      Build Shelter }} {{ 1D x 4hr = Do Research }} {{ 1D x 10h   = Repair Ship }} {{1D days = Search City}} {{----------= ----------------------------}}    {{Task=**Chains** EFFECT = 2D + DMs - 8}}   {{Prev Effect=Current Bonus}}  {{     -6 or less\t=\tDM-3}}  {{      -5 to -2\t=\tDM-2  }}  {{         -1\t=\tDM-1   }}  {{          0\t=\tDM+1  }}  {{         1-5\t= DM+2  }}  {{          6+\t=\tDM+3  }}  \n\n",
+                "istokenaction": false,
+                "name": "Time-Task-Chain-DMs",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#000000",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name= Combat Round (6s) Options:}}{{One Major Action=Melee/Range Attack, Leadership, Grapple, Call in Airstrike, Vehicle Maneuver, 2 Minor Actions, Extended Action, …}}  {{One Minor Action=Move, Aim, Chance Stance, Draw, Ready, Reload, Pick Up Item, Maintain Vehicle Control … }} {{Free Actions=Shout Warning, Push Button, Delay Action(Go On Hold) …}} {{Free Reactions=Dodge, Parry, Dive for Cover, Opportunity Attack}} {{---------=**Damage and Recovery** -------- }} {{Damage = Weapon + Effect (+STR Mod if Melee) - Armor }}  {{END is Reduced=first until reduced to zero, then STR or DEX (Player's Choice) }}  {{When 2 Attributes= reach 0, the Traveller is KO; When 3 = 0, likely KIA (table roll) }} {{Fatigued=END rounds of Melee (DM-2)}} {{Recovery=[See Heal Macro](`#🤕Heal)}}\n\n",
+                "istokenaction": false,
+                "name": "Combat-Options",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "! Starport Costs and Services and Current System Details\n\n\n\n!script {{\n--/|USER INPUT\n  --&StarPortCode|@{ScriptCards_Storage|SCS_-CurrentSystemStarPort}\n\n--/|TITLE CARD DISPLAY\n  --#titlecardbackground|#000000\n  --/tableBorder|3px solid #8B0000;\n  --#evenrowbackground|#D3D3D3\n  --#oddrowbackground|#E5E4E2\n  --#titleFontColor|#FFD700\n  --#noMinMaxHighlight|1\n  --#noRollHighlight|1 \n  --#LineHeight|1.5\n\n\n--/TITLES AND EMOTES|\n  --#title|Starport Services and Costs\n  --#leftsub|System: @{ScriptCards_Storage|SCS_-CurrentSystemName} @{ScriptCards_Storage|SCS_-CurrentSystemUWPOnly} @{ScriptCards_Storage|SCS_-CurrentTradeCodes} [br] Bases: @{ScriptCards_Storage|SCS_-CurrentSystemBases}, TAS Zone: @{ScriptCards_Storage|SCS_-CurrentSystemZone}\n\n--/| BUILD STARPORT DETAILS\n  --=1Da| 1d6 * 1000\n  --=1Db| 1d6 * 500\n  --=1Dc| 1d6 * 100\n  --=1Dd| 1d6 * 10\n  --=Time| 1d6\n\n\n\n   --/Code| [&StarPortCode]\n\n  --?[&StarPortCode] -eq A |[\n   --&Code|\"A\" = Excellent Starport\n   --&Scen|Huge trade volume, shipbuilding. Lots of big ships coming through frequently\n   --&Dock|Cr[$1Da] per week\n   --&Fuel|Refined (Cr500 per ton), Time:[$Time]hr\n   --&Repr|Shipyard (All), [u]Full Repairs[/u]   [br][[3d6]]T Spare Parts available\n  --]|\n  --?[&StarPortCode] -eq B |[\n     --&Code|\"B\" = Good Starport\n     --&Scen|High trade volume, skilled maintenance and repairs, regular passenger and bulk freighter services\n     --&Dock|Cr[$1Db] per week\n     --&Fuel|Refined (Cr500 per ton), Time:[$Time]hr\n     --&Repr|Shipyard (Spacecraft), [i][b]Full Repairs[/b][/i]   [br][[3d6]]T Spare Parts available\n     --&ForSale|[br][&ShopOutput1][br][&ShopOutput2]\n  --]|\n  --?[&StarPortCode] -eq C |[\n     --&Code|\"C\" = Routine Starport\n     --&Scen|Fuel, supplies and some skilled maintenance. Commercial and freighting opportunities for small ships \n     --&Dock|Cr[$1Dc] per week\n     --&Fuel|Un-Refined (Cr100 per ton), Time:[$Time]hr\n     --&Repr|Shipyard (Small Craft), [i][b]Full Repairs[/b][/i]   [br][[2d6]]TT Spare Parts available\n   --&ForSale|[br][&ShopOutput1]\n  --]|\n  --?[&StarPortCode] -eq D |[\n     --&Code|\"D\" = Poor Starport\n     --&Scen|Safe place to land, you can get fuel and supplies\n     --&Dock|Cr[$1Dd] per week\n     --&Fuel|Un-Refined (Cr100 per ton), Time:[$Time]hr\n     --&Repr|No Shipyard, [i][b]Limited Repairs[/b][/i] [br][[1d6]]T Spare Parts available\n  --]|\n  --?[&StarPortCode] -eq E |[\n     --&Code|\"E\" = Frontier Starport\n     --&Scen|Safe place to land, may be unmanned \n     --&Dock|Cr0 per week\n     --&Fuel|None\n     --&Repr|None, No Spare Parts available\n  --]|\n  --?[&StarPortCode] -eq X |[\n     --&Code|\"X\" = No Starport\n     --&Scen|A [Wilderness Landing](`#Wild-Land) is required.  No facilities exist and likely nobody there \n     --&Dock|Cr0 per week\n     --&Fuel|None\n     --&Repr|None, No Spare Parts available\n  --]|\n\n--/| PRINT STARPORT DETAILS\n  --+|[c][b]Starport Rating:[/b] [&Code][/c]\n  --+|[c][b]The Scene: [/b] [&Scen] [/c]\n  --+|[c][b]Port Attitude: [/b] @{ScriptCards_Storage|SCS_-CurrentSystemRelationship} [/c]\n  --+ Berthing Costs:|[&Dock]\n  --+ Fuel:|[&Fuel] (Harrier = 42T)\n  --+ Services:|[&Repr]\n--+ ================================= |\n  --+Full Repairs:|Facilities allow a damaged ship to be repaired and have plenty of spare parts for most common systems.  Cr100k per Critical Area, Cr50k per Hull Point  [Details](`#Effect-Repairs)\n--+Limited Repairs:| Facilities can only fix Hull damage. Cr100k per Hull Point   [Details](`#Effect-Repairs)\n--+Repair Costs:| 0.1% of ship purchase price\n--+Spare Parts:| 1 ton costs Cr100k [b](2x for Harrier)[/b]\n--+Destroyed Weapons:|Can't be repaired, must be repurchased\n--+ ================================= |\n  --+[c]Traveller Map and Wiki URLs:[/c]| \n  --+|[c] https://travellermap.com/  https://wiki.travellerrpg.com/ [/c]\n\n\n\n}}\n\n\n",
+                "istokenaction": false,
+                "name": "Starport-Old",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name=     Combat DMs Table}}  {{-:=__ ⚔️ **MELEE DMs** ⚔️ __ }}  {{Stance:=Target Prone **DM+1**}}   {{  Gang Up= Roll with **Boon**}} {{Wild Att= Both Sides Roll with **Boon**  }}  {{--:=__ 🔫 **RANGED DMs** 🔫 __ }} {{Range:=Short(25%): **DM+1**\nLong(2x): **DM-2**\nExtreme(4x): **DM-4**}}  {{Aiming:=**DM+1** per aim action (max +6), Laser Sight: **DM+1** if aiming}} {{Cover:=Using Cover **DM-2**, Prone **DM-1**}}  {{Scale:=Vehicle **DM+1**; Per 10 tons **DM+1**}}  {{Speed:= **DM-1**/10 relative meters/round}}   {{On Ship= Long Gun on board Ship: **DM-2**}}  {{2+ Action= 2:**DM-2** to all; 3:**DM-4** to all}}    {{---:=__ 👀 **OTHER DMs** 👀 __ }} {{Light:=Roll with **Bane** for Poor Light}}  {{2 Fisted= Both Rolls **DM-2** }}  {{Call Shot= Roll with **Bane**}}  {{Distracted=Roll with **Bane**}}\n\n",
+                "istokenaction": false,
+                "name": "Combat-DMs",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set statusmarkers|!three-leaves\n! assign \"fire\" marker\n\n\n&{template:default}{{name= 🔥       On Fire!       🔥 }} {{On Fire=Sets target suffers weapon damage every round after initial attack if it doesn't \"go out\"}} {{Goes Out=  on 8+, rolled at the start of every round. }} {{Put it Out=Use Significant Action to extinguish the fire, w/DEX check. DM+2 if using firefighting equipment.}} ",
+                "istokenaction": false,
+                "name": "🔥On-Fire",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#b6d7a8",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "! rules for making a jump\n\n!script {{\n    +++TravellerMg2eLib+++\n    -->LibTrav_CardHeader|a;b\n\n\n--#title|🦘 Jump! 🦘   \n--+Plot the Jump:|[br][I][u]Astrogation[/u][/I](EDU, 1Dx10 min) w/DM+4[br] 🔹 DM-1 per Parsec Jumped[br] 🔹 DM-1 per additional star after the first[br] 🔹 DM-1 per additional gas giant after the first[br] 🔹 DM+2 if within 2 parsecs of homeworld\n--+Make the Jump:|[br][I][u]Engineering[/u][/I](j-drive, EDU, 1Dx10 min) w/DM+4[br] 🔹 DM+TC Effect from \"Plot the Jump\"[br] 🔹 DM-1 per month of skipped maintenance[br] 🔹 DM-2 if using unrefined fuel[br] 🔹 DM-4 if within 100 Diameter limit\n--+Fuel Consumed:| 10% of Ship Tonnage per parsec traveled \n\n--:PROVIDE A BUTTON FOR VIEWING MISJUMP REFERENCE|\n    --+On Engineering (j-drive) Failure| [c] [rbutton]Poke to Show Mis-Jump Result::SHOW_MISJUMP_REFERENCE;0[/rbutton] [/c]\n\n--:PROVIDE A BUTTON FOR VIEWING JUMP SPACE Events|\n    --+Jump Space Events:| What kind of week?  [b][[2d6]][/b]\n    --+2-7:Normal:| Nothing \"Out of the Ordinary\" \n    --+8-9: Weird:|  1 Event = [b][[1d6]][[1d6]] [/b]\n    --+10-11: Strange:|  2 Events  = [b][[1d6]][[1d6]], [[1d6]][[1d6]] [/b]\n    --+12: Absurd:| 1 Event + 1 Oddity = [b][[1d6]][[1d6]], [[1d6]][[1d6]] [/b]\n\n\n--X|\n\n  --:SHOW_MISJUMP_REFERENCE|\n\n--+Engineer( j-drive) Roll Effect:|[br]**-1** = 1D days late.  Jump drive requires extensive re calibration (D3 days of work) but no repairs.[br]**-2** = 1Dx100 diameters off.  Jump drive needs minor repairs after emergence.  DM-2 until fixed.[br]**-3** = 1D parsecs in random direction;.  Jump drive needs major repairs after emergence.  DM-4 until fixed.[br]**-4**  = 1Dx1D parsecs in a random direction (maybe empty space?) ***Jumpspace Intrusions*** occur causing Damage equal to 1D+5% of Hull per day. (Roll Crits) Jump drive destroyed upon emergence.   [br]**-5 or less**  = 2D parsecs in a random direction (maybe empty space?) ***Severe Jumpspace Intrusions*** occur causing Damage equal to 1D+10% of Hull per day. (Roll Crits) Jump drive destroyed upon emergence.   \n\n--X|\n\n\n}}\n",
+                "istokenaction": false,
+                "name": "Jump!",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "!  Sensor details\n\n&{template:default}{{name=Scan the System: Harrier SensOps  }}  {{DM+1=Target using Power Plant; Per Critical Hit Target has; }} {{DM+1/=**Thrust** Target using m-Drive }}   {{DM+2=Target using Active Sensors }}  {{H DM+2=``Harrier`` Advanced Sensors }}    {{DM+2/4=Target is over 100k/500k tons}} {{DM+4=Target using Xponder/Comms}} {{Sensor=** Details by RANGE** - Passive}} {{Adj or Close= EM sigs of individual systems; Limited radar shape and structure; Fine temp gradations and individual heat sources; Fine visual details.  ***Active Adds:*** Full radar shape and structure w/fine details.}}   {{Short=  EM signatures of powerful sources only; Basic radar outline; Fine temp gradations & individual heat sources; Visual of shape & structure.  ***Active Adds:*** Full radar shape/structure w/fine details.}}  {{Med= EM signatures of powerful sources only; Basic radar outline; Thermal hot- cold spots; Visual of shape and structure.  ***Active Adds:*** Some shape/structural details. }}  {{Long= Presence/absence of EM activity; Thermal hot/cold spots only; Visual of basic outline.  ***Active Adds:***  Some shape & structural details. }}  {{Very Long=Presence or absence of EM activity; Thermal hot/cold overall; Visual of basic outline. ***Active Adds:***  Basic radar outline. }} {{Distant= Thermal hot or cold overall;  ***Active Adds:***  Basic radar outline.}}  {{``GM``=Scan the Harrier: as above plus Stealth DM-4}}\n",
+                "istokenaction": false,
+                "name": "SensOps",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!rt[Delimiter:BR|PrefaceUniqueSpace|ShowIcons|IconLabel:Off] /w gm &{template:default} {{name=People and Encounters}}  {{-=*** Passengers and Patrons*** }}  {{P1=[[1t[Trav-Patron]]] ***and*** [[1t[Trav-Passengers]]], **Bkg:** [[1t[Trav-Contact-Rival]]], **Quirk:** [[1t[Trav-Quirk]]]     }}   {{P2=[[1t[Trav-Patron]]] ***and***  [[1t[Trav-Passengers]]], **Bkg:** [[1t[Trav-Contact-Rival]]], **Quirk:** [[1t[Trav-Quirk]]]     }}  {{P76= [[d760]],[[d760]],[[d760]],[[d760]]  [760 Patrons Pdf](https://drive.google.com/file/d/18Wxi0IICGpGt_Fda935dOj4Yy8Ntv9ml/view?usp=sharing)    }}   {{ PSE=[Starport Enc Pdf](https://drive.google.com/file/d/1VDFFEzmsb7ZdKE3Oy0pfIcUhJ0TLOWU4/view?usp=sharing)  Passengers & NPCs   }}   {{-----=**Jobs**}} {{J1=**Job:** [[1t[Trav-Mission]]], **Target:** [[1t[Trav-Target]]], **Opposition:** [[1t[Trav-Opposition]]] ***and*** [[1t[Trav-Opposition]]]  }}  {{J2=**Job:** [[1t[Trav-Mission]]], **Target:** [[1t[Trav-Target]]], **Opposition:** [[1t[Trav-Opposition]]] ***and*** [[1t[Trav-Opposition]]]  }}  {{--= ***Urban Encounters*** 1:6 per 6h }}  {{U1=[[1t[Trav-Urban-Enc]]] ***or*** [[1t[Trav-Urban-Enc]]]  }}    {{---= ***Rural Encounters*** 1:6 per 6h }}  {{R1=[[1t[Trav-Rural-Enc]]] ***or*** [[1t[Trav-Rural-Enc]]]  }}      {{----=***Starport Encounters***  1:6 per 6h}}  {{SP1=[[1t[Trav-Starport-Enc]]] ***or*** [[1t[Trav-Starport-Enc]]]  }}     {{-----=***Animal Encounters*** }}  {{AE1=[[1t[Trav-Animal-Quirks]]] ***- or -*** [[1t[Trav-Animal-Quirks]]]  }}  \n\n! {{Event on 6+=[[1t[Trav-Starport-Event]]]  }}  {{------=👨‍👩‍👧‍👦 ***Jump Space Mishap!*** 👨‍👩‍👧‍👦}}  {{M1=[[1t[Trav-Jump-Space-Mishap]]]  }}  \n\n!  {{P3= [[1t[Trav-Patron]]] ***and*** [[1t[Trav-Passengers]]], **Bkg:** [[1t[Trav-Contact-Rival]]], **Quirk:** [[1t[Trav-Quirk]]]      }}  {{P4=[[1t[Trav-Patron]]] ***and*** [[1t[Trav-Passengers]]], **Bkg:** [[1t[Trav-Contact-Rival]]], **Quirk:** [[1t[Trav-Quirk]]]    }} \n\n!   {{J3=**Job:** [[1t[Trav-Mission]]], **Target:** [[1t[Trav-Target]]], **Opposition:** [[1t[Trav-Opposition]]] ***and*** [[1t[Trav-Opposition]]]  }}  {{J4=**Job:** [[1t[Trav-Mission]]], **Target:** [[1t[Trav-Target]]], **Opposition:** [[1t[Trav-Opposition]]] ***and*** [[1t[Trav-Opposition]]]  }} \n\n#Name\n",
+                "istokenaction": false,
+                "name": "PPnE",
+                "visibleto": "all"
+            },
+            "macrobar": {
+                "color": "#ff9900",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name= 🪙 Trade! 🪙}}{{Roll20= Use \"Trade\" tab on Ship Char Sheet}}  {{Cargo Space= Harrier: 25T, No Split with King }} {{Passengers=Steward Roll Required to \"Settle\" Passengers}}  {{Freight= Lots cannot be Broken Up and must be delivered On Time }}  {{ Mail=Must take all containers or none}}  {{ Illegal Goods= If Local Broker skill level roll is Nat 2 they are an informer, government agent or double-crosser.  }} {{Current= **System Info** \nName: @{ScriptCards_Storage|SCS_-CurrentSystemName} \nUWP: @{ScriptCards_Storage|SCS_-CurrentSystemUWPFull}\n }}  \n\n[Click for Trade Code Definitions](`#Trade-Codes)\n\n\n\n",
+                "istokenaction": false,
+                "name": "Trade",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "! Wilderness Landing\n\n&{template:default}{{name=         🏔️    Wilderness Landing!    🏔️         }}{{Find =**a Site Near Your Target:** Electronics (Sensors, EDU, 2Dx10min) }} {{Scans=Active (DM-2);  Passive (DM-4); \n2nd+ Attempt (DM-2)}}  {{Site=**Location:** Roll 2D+Sensors Effect}} {{0-=No suitable landing site is found within 100km x the planet’s Size code}}{{ 1–3 =A suitable landing site is located within 2D x 10 x the planet’s Size code from the target}}{{ 4–7 =A suitable landing site is located within 2D x the planet’s Size code from the target}} {{8–11 =A suitable landing site is located within 2D km from the target}}{{ 12–14 =A suitable landing site is located 2Dx100m from the target}}{{ 15+= A suitable landing site is located within a few metres of the target}} {{Land=**the Ship:** Pilot (DEX) DM-2}} {{Env= DM-4 if landing in a hazardous area.}}   {{Type=**of Landing:** Roll 2D+Pilot Effect}} {{ 0 or less =Basically, a crash. Everyone aboard suffers 3D damage (6D if they are not secured by straps). The ship takes 8D points of damage for every 100 tons of its displacement. The ship is stuck and will require significant work before it can take off again. }}  {{ 1 to 3=Extremely rough landing, resulting in 2D damage to everyone aboard (4D if they are not secured). The ship takes 2D points of damage for every 100 tons of its displacement. In addition, it is very awkwardly inclined, making access tricky and imposing DM-4 on Pilot checks to take off again.}}{{ 4 to 7 =Very rough landing, resulting in 1D damage to everyone aboard (2D if they are not secured). The ship is awkwardly inclined, making access tricky and imposing DM-2 on Pilot checks to take off again.}}  {{ 8 to 11 =Good enough. The ship is not quite level and everyone got bounced around a little. Some small objects may be shaken loose or damaged but the ship itself is intact. }}  {{12 to 14 =An entirely acceptable landing, not much rougher than usual. }}  {{15 or more = A perfect landing despite all hazards. }}\n",
+                "istokenaction": false,
+                "name": "Wild-Land",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#6d9eeb",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "!trav-aid --customs --uwp @{ScriptCards_Storage|SCS_-CurrentSystemUWPOnly} --name @{ScriptCards_Storage|SCS_-CurrentSystemName} --bases @{ScriptCards_Storage|SCS_-CurrentSystemBases} --zone @{ScriptCards_Storage|SCS_-CurrentSystemZone}",
+                "istokenaction": false,
+                "name": "Customs",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "1D = [[1d6]]",
+                "istokenaction": false,
+                "name": "🎲",
+                "visibleto": "all"
+            },
+            "macrobar": {
+                "color": "#c0c0c0",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "3D = [[3d6]]",
+                "istokenaction": false,
+                "name": "🎲🎲🎲",
+                "visibleto": "all"
+            },
+            "macrobar": {
+                "color": "#c0c0c0",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default} {{name=Skills for @{selected|token_name}}}   {{Admin (EDU)=[[@{selected|skilllevel-Admin}]]  [[@{selected|untrained-Admin}]] }}  {{Advocate (EDU)=[[@{selected|skilllevel-Advocate}]]  [[@{selected|untrained-Advocate}]] }}  {{Animals* (DEX) =[[@{selected|skilllevel-Animals}]]  [[@{selected|untrained-Animals}]] }}  {{Art* (INT)=[[@{selected|skilllevel-Art}]]  [[@{selected|untrained-Art}]] }} {{Astrogation (EDU)=[[@{selected|skilllevel-Astrogation}]]  [[@{selected|untrained-Astrogation}]] }} {{Athletics* (PHYS) =[[@{selected|skilllevel-Athletics}]]  [[@{selected|untrained-Athletics}]] }} {{Broker (SOC)=[[@{selected|skilllevel-Broker}]]  [[@{selected|untrained-Broker}]] }} {{Carouse (SOC)=[[@{selected|skilllevel-Carouse}]]  [[@{selected|untrained-Carouse}]] }} {{Deception (INT)=[[@{selected|skilllevel-Deception}]]  [[@{selected|untrained-Deception}]] }}  {{Diplomat (SOC)=[[@{selected|skilllevel-Diplomat}]]  [[@{selected|untrained-Diplomat}]] }} {{Drive* (DEX)=[[@{selected|skilllevel-Drive}]]  [[@{selected|untrained-Drive}]] }}  {{Electronics* (EDU) =[[@{selected|skilllevel-Electronics}]]  [[@{selected|untrained-Electronics}]] }}  {{Engineer* (EDU)=[[@{selected|skilllevel-Engineer}]]  [[@{selected|untrained-Engineer}]] }}  {{Explosives (EDU)=[[@{selected|skilllevel-Explosives}]]  [[@{selected|untrained-Explosives}]] }}  {{Flyer* (DEX)=[[@{selected|skilllevel-Flyer}]]  [[@{selected|untrained-Flyer}]] }}  {{Gambler (INT)=[[@{selected|skilllevel-Gambler}]]  [[@{selected|untrained-Gambler}]] }}  {{Gun Combat* (DEX) =[[@{selected|skilllevel-GunCombat}]]  [[@{selected|untrained-GunCombat}]] }}  {{Gunner* (INT)=[[@{selected|skilllevel-Gunner}]]  [[@{selected|untrained-Gunner}]] }}  {{Heavy Weapons*(DEX)=[[@{selected|skilllevel-HeavyWeapons}]]  [[@{selected|untrained-HeavyWeapons}]] }}  {{Investigate (INT)=[[@{selected|skilllevel-Investigate}]]  [[@{selected|untrained-Investigate}]] }}  {{JOAT (Special) =[[@{selected|skilllevel-JackOfAllTrades}]]  [[@{selected|untrained-JackOfAllTrades}]] }}  {{Language* (EDU)=[[@{selected|skilllevel-Language}]]  [[@{selected|untrained-Language}]] }}  {{Leadership (SOC)=[[@{selected|skilllevel-Leadership}]]  [[@{selected|untrained-Leadership}]] }}  {{Mechanic (EDU)=[[@{selected|skilllevel-Mechanic}]]  [[@{selected|untrained-Mechanic}]] }}  {{Medic (EDU)=[[@{selected|skilllevel-Medic}]]  [[@{selected|untrained-Medic}]] }}  {{Melee* (STR)=[[@{selected|skilllevel-Melee}]]  [[@{selected|untrained-Melee}]] }}  {{Navigation (EDU)=[[@{selected|skilllevel-Navigation}]]  [[@{selected|untrained-Navigation}]] }}  {{Persuade (INT)=[[@{selected|skilllevel-Persuade}]]  [[@{selected|untrained-Persuade}]] }}  {{Pilot* (DEX)=[[@{selected|skilllevel-Pilot}]]  [[@{selected|untrained-Pilot}]] }}  {{Profession* (EDU) =[[@{selected|skilllevel-Profession}]]  [[@{selected|untrained-Profession}]] }}  {{Recon (INT)=[[@{selected|skilllevel-Recon}]]  [[@{selected|untrained-Recon}]] }}  {{Science* (EDU)=[[@{selected|skilllevel-Science}]]  [[@{selected|untrained-Science}]] }}  {{Seafarer* (EDU)=[[@{selected|skilllevel-Seafarer}]]  [[@{selected|untrained-Seafarer}]] }}  {{Stealth (DEX)=[[@{selected|skilllevel-Stealth}]]  [[@{selected|untrained-Stealth}]] }}  {{Steward (INT)=[[@{selected|skilllevel-Steward}]]  [[@{selected|untrained-Steward}]] }}  {{Streetwise (INT)=[[@{selected|skilllevel-Streetwise}]]  [[@{selected|untrained-Streetwise}]] }}  {{Survival (INT)=[[@{selected|skilllevel-Survival}]]  [[@{selected|untrained-Survival}]] }}  {{Tactics (INT)=[[@{selected|skilllevel-Tactics}]]  [[@{selected|untrained-Tactics}]] }}{{Vacc Suit (EDU)=[[@{selected|skilllevel-VaccSuit}]]  [[@{selected|untrained-VaccSuit}]] }}\n",
+                "istokenaction": false,
+                "name": "PC-Skill-Dump",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name=         💵    Pay and Upkeep   💵         }}    {{``Crew`` = ``**Monthly Pay**``  }}{{Cr6000=Pilot}}  {{Cr5000=Astrogator}}  {{Cr4000=Engineer}}  {{Cr3000= Medic }}  {{Cr2000=Steward }}  {{Cr1000=Gunner(2) or SensOps or Marine}}  {{Cr4500=TAS Membership }}  {{``Personal`` = ``**Upkeep & Cost of Living**``  \n}} {{Living= Costs based on SOC}}  {{ Debts=Pay down any debts }}  {{Ammo = Cost to restock all weapons with standard ammo (not grenades, explosives or special ammo) }} {{Med Kit = 25% Cost to restock supplies and standard pharma. 100 uses}} {{Armor= 5% Cost  most expensive armor}}{{Toolkit = 5% Cost most expensive toolkit}}   {{``Ship`` = ``**Monthly Harrier Op Expense**``  }} {{Mortgage= 50% to King }} {{ Life Supt= Cr16,800/mo }}{{Maint = Cr28,630/mo }}  {{``Annual`` = ``**Yearly Payouts on Holiday**``  }} {{Pension= See Character Sheet}}  {{ Ship Shares=Cr10k each}}  {{Invest-ments = See Character Sheet}} \n\n\n! Mortgage= Purchase Price /240\n!  {{ Rooms=Cr1000/Stateroom }}  {{Berths = Cr100/Low Berth}} {{Crew=Cr1000/person }} ",
+                "istokenaction": true,
+                "name": "Pay-Day",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "\n! HEALING\n\n&{template:default}{{name=🤕 Healing and Recovery 🤕 }}{{Wounded!=***First Aid*** within 1 min injury to Heal Medic (1D rnd, EDU) Effect }} {{3 Stats at 0=***KIA?***  Roll on [Wound Table](https://journal.roll20.net/handout/-NtO_pCFhaa5fJKhuc9u)}}   {{2 Stats at 0= ***KO:***  Spend Benny or roll END each min to recover. DM+1/min }}  {{3 Stats Damaged=***Surgery:*** in hospital or sickbay Heals Medic(1Dh, EDU)  Effect+3\n***Natural Healing:*** with bed rest Heals END DM per day }}  {{1 or 2 Stats Damaged = ***Medical Care:*** in hospital or sickbay with bed rest Heals 3 + END DM + Medic DM per day\n***Natural Healing:*** with bed rest Heals 1D + END DM per day \n``***Natural Healing:*** with light duty Heals END DM per day (Min 1 point)`` }}  {{Mental=Heal 1 point per day of bed rest}} {{Downtime Recovery=Bed Rest, Heals 4D+END DM +1D in Starport}}  {{``Augments``=Heal half as many points (round up) }}   {{ ``END DM`` = Patient's Normal (unwounded) END DM.   }}  {{Details=Healing may be divided between stats as desired.   \nLight Duty is off Mission/Job.}}\n\n",
+                "istokenaction": true,
+                "name": "🤕Heal",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "\n! rules for run ins with local law enforcement\n\n!script {{\n    +++TravellerMg2eLib+++\n    -->LibTrav_CardHeader|a;b\n\n\n--#title| Run In With the Law!\n--+System:|@{ScriptCards_Storage|SCS_-CurrentSystemName},  [b]UWP:[/b] @{ScriptCards_Storage|SCS_-CurrentSystemUWPOnly}, [b]2D:[/b] [[2d6]]\n--+Run In:| Occurs if 2D+DMs <= Law Level\n\n--+Check:| IDs and Papers \"Checked\": [br]🔹 New On World / Obvious Offworlder [b]DM+0[/b][br]🔹 Offworlder Acting Suspicious [b]DM-1[/b][br] 🔹 Travel docs and IDs are checked. [br]🔹 Admin|Streetwise [b]w/DM[/b] allays suspicion[br]    on fail, detectives Investigate. \n\n--+Investigate:| Detectives \"Investigate\": [br]🔹 Breaking and Entering [b]DM-2[/b] [br]🔹 Firefight; Murder; Carnage [b]DM-4[/b] [br]🔹 Detective probes into backgrounds. [br]    Ship searched. May be followed, [br]     have comms tapped, questioned closely. [br] 🔹 Admin|Streetwise [b]w/DM[/b] allays suspicion[br]    on fail, authorities Apprehend.\n\n--+Apprehend:| Police Respond to \"Apprehend\": [br]🔹 Bar fight / Shots fired [b]DM-1/DM-2[/b] [br]🔹 Apprehend: Police are  ready for a fight. [br]    Response proportional to the threat posed. [br]     e.g. Bar fight: baton, stunner, gas, etc.  \n\n--:PROVIDE A BUTTON FOR VIEWING SENTENCING REFERENCE|\n    --+If Apprehended, move on to Sentencing.| [c] [rbutton]Poke to Show Sentencing Rules::SHOW_SENTENCING_REFERENCE;0[/rbutton] [/c]\n--X|\n\n  --:SHOW_SENTENCING_REFERENCE|\n\n\n\n--+Crime Sentencing DMs: (LL=Law Level)|  [br]🔹 Smuggling: DM = Planet LL - LL  Banned  [br]🔹 Minor Assault, Petty Theft  DM = LL - 5  [br]🔹 Destro Property, Major Theft   DM = LL - 3  [br]🔹 False ID, Armed Robbery   DM = LL - 2  [br]🔹 Manslaughter, Major Fraud  DM = LL - 1  [br]🔹 Murder, Harm Starport    DM = LL + 0 [br]🔹 Mass Murder, Serial Killing DM = LL + 2 [br]🔹 Once in a Generation Atrocity DM = LL + 5 [br]🔹 Advocate reduces Crime DM [br]    by the Effect of the check\n\n--+Sentencing:|  2D + Final Sentencing DM [br]🔹 0-   Dismissed   [br]🔹 1–2  Fine: 1DxCr1k (per ton of contraband)  [br]🔹 3–4   Fine: 2DxCr5k (per ton of contraband)  [br]🔹 5–6   Exile|Fine: 2DxCr10k (per ton)  [br]🔹 7–8 Prison 1Dm|Exile|Fine: 2DxCr20k/ton[br]🔹 9–10 Exile|Imprisonment for 1D years  [br]🔹 11–12   Exile|Imprisonment for 2D years [br]🔹 13–14   Life imprisonment  [br]🔹 15+  Death  Sentence\n\n--+Exile: |   Leave planet immediately, never return\n\n--+Bounty: | Government Response to Fleeing: [br]    2D + Final Crime DM[br]🔹 6- Warrants remain outstanding [br]🔹 7–9   Extradition req. of worlds w/in 2Dp [br]🔹  10–12   Bounty Set  [br]🔹 13–15   Large Bounty, Agents Dispatched [br]🔹  16–18   Huge Bounty, Agents Dispatched  [br]🔹 19+  Huge Bounty, Task Force Est. [br]🔹 Bounty = Cr1k x (2D + Crime DM) [br]    Large Bounty: 5x, Huge 25x\n\n--X|\n}}\n",
+                "istokenaction": false,
+                "name": "The-Law",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "! SET CURRENT SYSTEM\n!\n! build uwp hash and set current world, persists across rolls and sessions\n!\n! system dropdown prompt uses a shift-return after each cluster/chain\n!\n! Variables:  =/$ are Roll variables (numbers)\n! Variables:  &/& are string variables (text)\n!\n! SC String Split function:  Splits stringValue into pieces, breaking it at delimiter. \n!   Returns a rollVariable with \"Count\" appended to the assigned variable name and a series \n!   of string variables with numbers appended (starting at 1) for each of the returned pieces.\n\n!script {{\n\n  --/|LOAD LIRARY FUNCTIONS\n  +++TravellerMg2eLib+++\n  \n  --/|choose system Name from drop down\n  -->LibTrav_DropDownSystemNames|DropDownSystemNames\n  --&CurrentSystemName|?{Current System?| @{ScriptCards_Storage|SCS_-CurrentSystemName} | @{ScriptCards_Storage|SCS_-DropDownSystemNames}  }\n\n\n  --/|Call library function to build hash of UWP + Bases + Zone + Port Attitude + Trade Codes\n  --/| This call stores the \"new\" Current System chosen from the drop down\n  -->LibTrav_SystemTracker|[&CurrentSystemName]\n\n\n--/|Print Starport Details - use sc variables as ScriptCards_Storage... vars are not set until script exits\n  -->LibTrav_CardHeader|a;b\n  --#title|The Crew Moves to a New System...\n  --+Current System Set To:|[&CurrentSystemName]\n  --+| [Starport Details](`#Starport)\n\n\n}}",
+                "istokenaction": false,
+                "name": "Set-System",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#ff9900",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "/em WHERE AM I?\n#Starport\n",
+                "istokenaction": true,
+                "name": "🗺️U-R-Here",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set name|\"?{Squad ID|A}: @{selected|token_name}\"",
+                "istokenaction": false,
+                "name": "Add-Squad-Id",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "\n! link to orig macro:  https://app.roll20.net/forum/post/11548675/mongoose-2e-traveller-character-sheet-updates/?pagenum=4\n! this version makes use of a PC Macro Mule to store all the attack buttons\n\n\n\n\n\n\n/w @{selected|character_name} &{template:default} {{name=QUICK SHEET FOR:\n**@{selected|character_name}**}}   {{ Init:=[Initiative](~selected|initiative)  [Tactics](~selected|Tactics) }} {{Mode:= [Boon](~selected|Boon) [Normal](~selected|Normal) [Bane](~selected|Bane)}}   {{W1:= [**@{selected|weapon_name-1}** (Level: @{selected|weapon_skill-1})](~PCMacroMule|Fire-Weapon-1) }} {{W2:= [**@{selected|weapon_name-2}** (Level: @{selected|weapon_skill-2})](~PCMacroMule|Fire-Weapon-2)  }}  {{W3:=[**@{selected|weapon_name-3}** (Level: @{selected|weapon_skill-3})](~PCMacroMule|Fire-Weapon-3) }}  {{W4:=[**@{selected|weapon_name-4}** (Level: @{selected|weapon_skill-4})](~PCMacroMule|Fire-Weapon-4) }}  {{W5:=[**@{selected|weapon_name-5}** (Level: @{selected|weapon_skill-5})](~PCMacroMule|Fire-Weapon-5) }}  {{W6:=[**@{selected|weapon_name-6}** (Level: @{selected|weapon_skill-6})](~PCMacroMule|Fire-Weapon-6) }}  {{  Stats:= [STR: **@{selected|base-Strength}**](~selected|Strength), [DEX: **@{selected|base-Dexterity}**](~selected|Dexterity), [END: **@{selected|base-Endurance}**](~selected|Endurance),  [INT: **@{selected|base-Intellect}**](~selected|Intellect),  [EDU: **@{selected|base-Education}**](~selected|Education), [SOC: **@{selected|base-Social}**](~selected|Social)   }}  {{ Skills:= [Admin](~selected|Admin)  [Advocate](~selected|Advocate)     [Animals](~selected|Animals)      [Athletics](~selected|Athletics)     [Art](~selected|Art)      [Astrogation](~selected|Astrogation)      [Broker](~selected|Broker)      [Carouse](~selected|Carouse)      [Deception](~selected|Deception)      [Diplomat](~selected|Diplomat)      [Drive](~selected|Drive)   [Electronics](~selected|Electronics)   [Engineer](~selected|Engineer)   [Explosives](~selected|Explosives)      [Flyer](~selected|Flyer)   [Gambler](~selected|Gambler)      [Investigate](~selected|Investigate)      [Leadership](~selected|Leadership)      [Mechanic](~selected|Mechanic)      [Medic](~selected|Medic)      [Navigation](~selected|Navigation)      [Persuade](~selected|Persuade)  [Pilot](~selected|Pilot)     [Recon](~selected|Recon)   [Seafarer](~selected|Seafarer)    [Stealth](~selected|Stealth)      [Steward](~selected|Steward)      [Streetwise](~selected|Streetwise)     [Survival](~selected|Survival)    }} \n\n",
+                "istokenaction": true,
+                "name": "📝PC-Quicksheet",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "!token-mod --set showname|1 showplayers_name|1 show_tooltip|1 showplayers_aura1|yes  showplayers_aura2|yes  controlledby|all",
+                "istokenaction": true,
+                "name": "Give-Token-To-Players",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "! Vehicle Token Run by NPC Vehicle Team (no sheet, quick and dirty)\n! 3 Roll20 Bubbles:\n!     Bar 3 Red   Left Bubble:    Crew Rank DM+1-5 for N/S/V/H/L\n!     Bar 1 Green Middle Bubble:  Vehicle Agility DM; (Off/Def Pilot/Evade Mod for star ships)\n!     Bar 2 Blue  Right Bubble:   Hull Points\n!\n!\n! Speed Bands: Stop:0m/r, Idle:50m/r, V.Slow:100m/r, Slow:150m/r, Med:200m/r, High:300m/r, Fast:500m/r, V.Fast:800m/r (10 rounds to achieve)\n!\n! Note: NPC Crits that inflict a negative DM simply reduce the Agility of the Vehicle\n!\n! Token Name Examples\n! Name Agility/TopSpeed/Hull(Armor Front/Rear/Side) Weapons\n!  Tank -2/Slow/90(70/40/65) ACan/MG\n!\n! Speed Bands (m/r):\n! Stop:, Idle:50, V.Slow:100, Slow:150, Med:200, High:300, Fast:500, V.Fast:800m(10r req.)\n\n!script {{\n\n--/|LOAD LIRARY FUNCTIONS\n+++TravellerMg2eLib+++\n\n--/|SET SCRIPT SPECIFIC CARD STYLE\n  -->LibTrav_CardHeader|a;b\n  --#sourceToken|@{selected|token_id}\n  --#emoteSourceTokenSize|50\n  --#emoteState|visible\n  --#emoteBackground|#DCDCDC\n\n--/|USER INPUT\n  --=NumManRolls|?{# Maneuver Rolls?|1}\n  --=NumGunRolls|?{# Gunner Rolls?|1}\n  --=ManMod|?{Maneuver Modifier?|0}\n  --=GunMod|?{Gunner Modifier?|0}\n\n--/|READ TOKEN INFO\n\n  --/|READ THE RED BUBBLE FOR CREW DM\n    --=VehCrewDM|[*S:t-bar3_value]\n    --/Veh Crew DM Points|[$VehCrewDM] (debug)\n\n  --/|READ THE GREEN BUBBLE FOR AGILITY DM\n    --=VehAgilityDM|[*S:t-bar1_value]\n    --/VehAgility DM|[$VehAgilityDM] (debug)\n\n  --/|READ THE BLUE BUBBLE FOR HULL POINTS\n    --=VehHullPoints|[*S:t-bar2_value]\n    --/Veh Hull Points|[$VehHullPoints] (debug)\n\n  --/|READ THE TOKEN NAME FOR EMOTE TEXT IF PLAYER OWNS TOKEN\n       --&TokenName|[*S:t-name]\n       --/Token Name|[&TokenName] (debug)\n\n  --/|DETERMINE WHO CONTROLS THE TOKEN TO SET VISIBILITY PROPERLY  (Controller = \"all\" for player tokens)\n    --&Controller|[*S:t-controlledby]\n    --/Controller| [&Controller] (debug)\n      --?[&Controller] -eq  all |[\n         --&ShowPlayersName|1\n         --#emoteText|[&TokenName]\n      --]|[\n         --&ShowPlayersName|0\n         --#emoteText|Enemy Vehicle Acts!\n      --]|\n\n  --/|WRITE CARD HEADER\n    --#title|VEHICLE Action\n    --#leftsub|Maneuver DM:[$ManMod], Gunner DM: [$GunMod], Evade DM:[$VehAgilityDM], Crew DM:[$VehCrewDM], Hull:[$VehHullPoints]\n\n  --/| RUN TOKENMOD COMMAND (Turn on player access first)\n      --@token-mod|_config players-can-ids|on\n      --/token-mod|_set showname|1 showplayers_name|[&ShowPlayersName]  showplayers_bar2|1 playersedit_bar2|1 bar2|=[$VehHullPoints]\n      --@token-mod|_set showname|1 showplayers_name|[&ShowPlayersName]\n\n\n  --/|LOOP THROUGH ROLLS OF TASK/SKILL CHECK AND DAMAGE\n    --%ManLoopCounter|1;[$NumManRolls];1\n\n      --/| MANEUVER TASK ROLL (CREW DM AND AGILITY DM)\n      --=MRoll1|2d6 + [$VehAgilityDM] + [$VehCrewDM] + [$ManMod]\n      --?[$MRoll1] -ge 8|[\n         --&MRoll1Out|[#080][$MRoll1] Success![/#]\n      --]|[\n         --&MRoll1Out|[$MRoll1]\n      --]|\n      --/| MANEUVER EFFECT\n      --=MEff1| [$MRoll1] - 8\n      --?[$MEff1] -ge 0 |[\n         --&MEff1Out|[#080][$MEff1][/#]\n      --]|[\n         --&MEff1Out|[$MEff1]\n      --]|\n  --/|WRITE OUT MANEUVER ROLL\n        --+|[c]** [&ManLoopCounter]: [#C50]Maneuver Roll:[/#]**[&MRoll1Out] **Effect:**[&MEff1Out] [/c]\n\n\n    --%GunLoopCounter|1;[$NumGunRolls];1\n\n      --/| MAIN GUN1 TASK ROLL (CREW DM BUT NO AGILITY DM)\n      --=GRoll1|2d6 +  [$VehCrewDM] + [$GunMod]\n      --?[$GRoll1] -ge 8|[\n         --&GRoll1Out|[#080][$GRoll1] Success![/#]\n      --]|[\n         --&GRoll1Out|[$GRoll1]\n      --]|\n      --/| MAIN GUN1 EFFECT\n      --=GEff1| [$GRoll1] - 8\n      --?[$GEff1] -ge 0 |[\n         --&GEff1Out|[#080][$GEff1][/#]\n      --]|[\n         --&GEff1Out|[$GEff1]\n      --]|\n\n      --/| MAIN GUN1 DAMAGE\n        --=1D| 1d6 + [$GEff1]\n        --=2D| 2d6 + [$GEff1]\n        --=3D| 3d6 + [$GEff1]\n        --=4D| 4d6 + [$GEff1]\n        --=5D| 5d6 + [$GEff1]\n        --=6D| 6d6 + [$GEff1]\n \n      --/| OUTPUT\n        --+[&GunLoopCounter]:|**Gunner:**[&GRoll1Out] **Effect:**[&GEff1Out]** Dam:**[br] 1D[$1D]2D[$2D]3D[$3D]4D[$4D]5D[$5D]6D[$6D]\n    --%|\n    --%|\n\n--:PROVIDE A BUTTON FOR VIEWING VEHICLE WEAPON/SPEED REFERENCE|\n    --+| [c] [rbutton]Poke to Show Vehicle Weapon/Speed Reference!::SHOW_VEHICLE_REFERENCE;0[/rbutton] [/c]\n--:PROVIDE A BUTTON FOR VIEWING SHIP WEAPON REFERENCE|\n    --+| [c] [rbutton]Poke to Show Ship Weapon Reference!::SHOW_SHIP_REFERENCE;0[/rbutton] [/c]\n--X|\n\n  --:SHOW_VEHICLE_REFERENCE|\n--+[#080]Vehicle Weapons:[/#]| [br] **MG:** (F.Pin),R:1km,4D,Mag:100,Auto3 [br] **ACan:** (Tur),R:1km,6D,Mag:500,Auto3 [br]**Can:** (Tur),R:2km,8D,Mag:30,Blast10 [br] **LsrCan:** (Tur),R:2.5km,1DD,Mag:Inf,AP10[br]**PGA:** (Tur),R:6km,2DD,Mag:Inf,AP10 [br] **AnMisLsr:** (Tur),R:.5,1D,Auto3(7+,pg49 VHB)[br]**GCan:** (Tur),R:3km,Mag:60,2DD,AP15,Auto2[br] **FGX:** (Tur),R:3,3DD,Inf,AP10,Blast15,Rads\n--+[#080]Speed Bands[/#]| (m/r): **Stop:**0, **Idle:**50, [br]**V.Slow:**100, **Slow:**150, **Med:**200[br]**High:**300, **Fast:**500, **V.Fast:**800m(10r req.)\n--X|\n\n  --:SHOW_SHIP_REFERENCE|\n--+[#080]Starship Weapons:[/#]| [br] **Beam Laser:** R:Med, 1D, DM+4 [br] **Pulse Laser:** R:Long, 2D, DM+2 [br]**Part Barb:** R:V. Long, 4Dx3, DM+0 [br]**Missile:** R:Dist, 4D+Spec, DM+0, Thrust:10 Smart\n--X|\n\n}}\n\n",
+                "istokenaction": true,
+                "name": "✈️Veh",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "!trav-aid --buyItem --uwp @{ScriptCards_Storage|SCS_-CurrentSystemUWPOnly}  --name @{ScriptCards_Storage|SCS_-CurrentSystemName}  --itemTL ?{Item Tech Level(TL)?|10|1|2|3|4|5|6|7|8|9|11|12|13|14|15|16|17|18}  --difficulty ?{Acquisition Difficulty?|Easy|Hard} --legality ?{Legality?|Legal|Banned}\n\n! trav-aid --shop --uwp @{ScriptCards_Storage|SCS_-CurrentSystemUWPOnly} \n\n",
+                "istokenaction": true,
+                "name": "🛒Shop-Assist",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "! toggle  red dot and print help text only when assigned.\n\n!script {{\n   +++TravellerMg2eLib+++\n\n      -->LibTrav_CardHeader|a;b\n\n  --#sourceToken|@{selected|token_id}\n\n           --#title|🔴 Wounded! 🟡\n\n      --/|toggle red dot\n     -->LibTrav_ToggleTokenStatusMarker| StatusOnOff;red\n     --/StatusOnOff| [&StatusOnOff]\n\n      --?[&StatusOnOff] -eq \"Off\" |[\n           --+Cleared 🔴 Status|\n      --]|[\n\n            --/Healthy| Wound DM+0, No Dot\n            --+🟡|Hit (but not Impaired)\n            --+🔴|Hurt DM-2\n            --+❌|Hemorrhaging KO or KIA \n      --]|\n\n\n}}",
+                "istokenaction": false,
+                "name": "🔴Hurt",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "! Ally/Enemy/Animal Token - handling extra's\n! 4 NPC States:\n!   Healthy DM+0 (no dot)\n!   Hit: DM+0 (yellow dot, not impaired)\n!   Hurt @8HP=DM-2(red dot) may surrender or flee\n!   Hemoraging: KO @3HP or KIA @0HP (red x)\n!\n!   Armor bonus scales with Law Level\n!    (Take Damage total armor in prompt) LAW:  0-3 Armor+3, 4-6 Armor+2, 7-9 Armor+1, 10+ Armor+0\n!\n!   Weapon traits scales with Tech Level ( Auto, AP, Scope, .. )\n!    (Damage Output)    Tech AP:   0-5 AP0,    6-9 AP2,    10-12 AP4,    13+ AP8  (better ammo, equipment, etc)\n!    (# Rolls Default)  Tech Auto: 0-5 Auto 0, 6-9 Auto 2, 10-12 Auto 3, 13+ Auto 4\n!    (Mods Default)     Tech DM:   0-5 DM+0,   6-9 DM+0,   10-12 DM+1    13+ DM+2   (huds, jacks, computers, scopes, ...)\n!\n! 5 Ranks - NEW\n!   Rank Code, DM, Rng Dam:     N+1 3D      S+2 4D     V+3 4D      H+4 5D      L+5 5D  (hth dam = Range Dam-1D)\n!   Hits: [$RankDM] * 3 + 20    23          26         29          32          35\n!   Armor Base: [$RankDM] * 3   3           6          9           12          15  (Armor Mods based on Law Level - see above)\n!   Hits to Stat Map            all 7s      all 8s     all 9s      all 10s     all 11s\n!   Aura Color                  Blue        Yellow     Orange      Red         Purple\n!\n! 3 Roll20 Bubbles:\n!   Bar 3 Red Bubble (Left): Rank DM;\n!   Bar 1 Green Bubble (Middle): Animal Damage Dice String e.g. 2d6+1  (or blank if not Animal)\n!   Bar 2 Blue Bubble (Right): Max Hits (filled in by script, if blank)\n!\n! 1 Roll20 Token Name:  [Current Name] Hits(Armor)\n!   Token Name Example: Thug 23(3)\n!   Animal Tokens are not renamed\n!\n! Variables:  =/$ are Roll variables (numbers)\n! Variables:  &/& are string variables (text)\n!\n!\n! Future:   if PC owner, turn off all Law/Tech Mods?\n\n\n!script {{\n\n\n--/|LOAD LIRARY FUNCTIONS\n+++TravellerMg2eLib+++\n\n--/|SET SCRIPT SPECIFIC CARD STYLE\n  -->LibTrav_CardHeader|a;b\n  --#sourceToken|@{selected|token_id}\n  --#emoteSourceTokenSize|50\n  --#emoteState|visible\n  --#emoteBackground|#DCDCDC\n\n  --/|USER INPUT\n    --=NumRolls|?{# Rolls?|@{ScriptCards_Storage|SCS_-MookAutoMod}}\n    --=SitMod|?{Modifier?|@{ScriptCards_Storage|SCS_-MookSkillMod}}\n\n\n--/|IF RED DOT (HURT) SET, ADD WOUND DM\n  -->LibTrav_CheckTokenStatusMarker|StatusOnOff;red\n  --/Status red| [&StatusOnOff] (debug)\n  --?[&StatusOnOff] -eq Off | =WoundDM;0 | =WoundDM;-2\n\n--/|IF PURPLE/PINK DOTS (BOON/BANE) SET, MODIFY SKILL DICE\n  --&SkillDice|2d6\n  -->LibTrav_CheckTokenStatusMarker|StatusOnOff;purple\n  --/Status purple| [&StatusOnOff]  (debug)\n  --?[&StatusOnOff] -eq On |[\n    --&SkillDice|3d6kh2\n    --+Rolling with [#080]BOON!![/#]|\n  --]|\n  -->LibTrav_CheckTokenStatusMarker|StatusOnOff;pink\n  --/Status pink| [&StatusOnOff] (debug)\n  --?[&StatusOnOff] -eq On |[\n    --&SkillDice|3d6kl2\n    --+Rolling with  [#f00]BANE![/#]|\n  --]|\n  \n\n  --/|READ THE RED BUBBLE (bar3) FOR RANK DM\n    --=RankDM|[*S:t-bar3_value]\n    --/Rank DM|[$RankDM] (debug)\n\n  --/|READ THE GREEN BUBBLE (bar1) FOR ANIMAL DAMAGE DICE STRING e.g. 1d6+2\n    --&AnimalDamStr|[*S:t-bar1_value]\n    --/Animal Dam|[&AnimalDamStr] (debug)\n    --/|Need to make a roll here for the token renaming test below - animal tokens are NOT renamed\n    --=AniDam|[&AnimalDamStr]\n    --/Ani Dam|[$AniDam] (debug)\n\n  --/|CHECK IF TOKEN REPRESENTS A CHARACTER\n    --&TokenRep|[*S:t-represents]\n    --/Token Rep|[&TokenRep] (debug)\n\n  --/|WRITE CARD HEADER\n    --?[$AniDam] -eq 0 |[\n      --#title|NPC Action\n      --#leftsub|Mod:[$SitMod], Auto:[$NumRolls], Rank DM:[$RankDM], Wound DM:[#f00][$WoundDM] [/#]\n      --=TokenArmor|[$RankDM] * 3 + @{ScriptCards_Storage|SCS_-MookArmorMod}\n      --=TokenAP|@{ScriptCards_Storage|SCS_-MookAPMod}\n    --]|[\n      --#title|ANIMAL Action\n      --#leftsub|Mod:[$SitMod], Rank DM:[$RankDM], Wound DM:[#f00][$WoundDM] [/#]\n      --=TokenArmor|[$RankDM] * 3 \n      --=TokenAP|0\n    --]|\n    --=TokenBlueBubbleHP|[$RankDM] * 3 + 20\n    --&TokenName|[$TokenBlueBubbleHP.Raw]([$TokenArmor.Raw])\n    --/|Token Name: [&TokenName]\n\n  --/| BUILD TOKENMOD COMMAND COMPONENTS FOR TOKEN CONFIG - Hurt @ 8; KO @ 3; Move 6m\n\n\n    --?[$RankDM] -eq 1 |[\n       --&TokenAura2Color|87CEEB\n       --&RngDam|3d6\n       --&MelDam|2d6\n    --]|\n    --?[$RankDM] -eq 2 |[\n       --&TokenAura2Color|FFFF00\n       --&RngDam|4d6\n       --&MelDam|3d6\n    --]|\n    --?[$RankDM] -eq 3 |[\n       --&TokenAura2Color|FF6500\n       --&RngDam|4d6\n       --&MelDam|3d6\n    --]|\n    --?[$RankDM] -eq 4 |[\n       --&TokenAura2Color|FF0000\n       --&RngDam|5d6\n       --&MelDam|4d6\n    --]|\n    --?[$RankDM] -eq 5 |[\n       --&TokenAura2Color|800080\n       --&RngDam|5d6\n       --&MelDam|4d6\n    --]|\n\n\n  --/|DO NOT UPDATE TOKEN NAME WITH RANK INFO IF ALREADY PRESENT\n    --&CurrentTokenName|[*S:t-name]\n    --/index|[&CurrentTokenName(indexof,[&TokenName])]\n\n    --?[&CurrentTokenName(indexof,[&TokenName])] -gt -1 |[\n      --&FinalTokenName| [&CurrentTokenName]\n      --/| A\n    --]|[\n      --&FinalTokenName| [&CurrentTokenName] [&TokenName]\n      --/| B\n    --]|\n       --/| Token mod needs quotes on the name\n      --&FinalTokenName| \"[&FinalTokenName]\"\n\n    --/|Final Token Name: [&FinalTokenName]\n\n\n\n  --/|SET NPC TOKENNAME AND SHOW TO PLAYERS IF NOT AN ANIMAL or CHARACTER (Turn on player access first)\n    --?[$AniDam] -eq 0 -and [&TokenRep(indexof,-)] -eq -1 |[\n      --/|Ani Dam = [$AniDam] ; Tok Rep Index(-) = [&TokenRep(indexof,-)] (debug)\n      --@token-mod|_config players-can-ids|on\n      --@token-mod|_set showname|1 showplayers_name|[&ShowPlayersName] showplayers_aura1|yes showplayers_aura2|yes aura1_radius|0.05 aura1_color|FFFFFF aura2_radius|0.07 aura2_color|[&TokenAura2Color] name|[&FinalTokenName]\n    --]|\n\n  --/|DO NOT OVERWRITE HP IN BLUE BUBBLE IF ALREADY PRESENT\n    --&CurrentBlueBubble|[*S:t-bar2_value]\n    --/Current Blue Bubble| [&CurrentBlueBubble]\n      --/|Blue Bubble = [&CurrentBlueBubble] ; Tok Rep Index(-) = [&TokenRep(indexof,-)] (debug)\n    --?[&CurrentBlueBubble] -gt 0  -or [&TokenRep(indexof,-)] -gt -1  |[\n      --/| Do Nothing\n    --]|[\n      --@token-mod|_set bar2_value|[$TokenBlueBubbleHP]\n    --]|\n\n  --/|DETERMINE WHO CONTROLS THE TOKEN TO SET VISIBILITY PROPERLY  (Controller = \"all\" for player tokens)\n    --&Controller|[*S:t-controlledby]\n    --/Controller| [&Controller]  (debug)\n    --?[&Controller] -eq  all |[\n      --&ShowPlayersName|1\n      --#emoteText|[&FinalTokenName]\n    --]|[\n      --&ShowPlayersName|0\n      --#emoteText|Enemy Acts!\n    --]|\n\n  --/|OUTPUT LOOP THROUGH ROLLS OF TASK/SKILL CHECK AND DAMAGE\n    --%LoopCounter|1;[$NumRolls];1\n      --/| TASK ROLL\n      --=Roll1|[&SkillDice] + [$WoundDM] + [$RankDM] +  [$SitMod]\n      --?[$Roll1] -ge 8|[\n         --&Roll1Out|[#080][$Roll1][/#]\n      --]|[\n         --&Roll1Out|[$Roll1]\n      --]|\n\n      --/| EFFECT\n      --=Eff1| [$Roll1] - 8\n      --?[$Eff1] -ge 0 |[\n         --&Eff1Out|[#080][$Eff1][/#]\n      --]|[\n         --&Eff1Out|[$Eff1]\n      --]|\n\n      --/| DAMAGE\n      --=Ranged|[&RngDam] + [$Eff1]\n      --=Melee|[&MelDam] + [$Eff1]\n      --=AniDam|[&AnimalDamStr] + [$Eff1]\n\n      --/| OUTPUT\n      --?[$Eff1] -ge 0 |[\n        --+[&LoopCounter]:|**Roll:**[&Roll1Out]**Effect:**[&Eff1Out] **Outcome: [#080]SUCCESS![/#]** [br]**DAM:** [#f00]AP:[/#][$TokenAP] Rng:[$Ranged]|| H2H:[$Melee]|| Ani:[$AniDam]\n      --]|[\n        --+[&LoopCounter]:|**Roll:**[&Roll1Out]**Effect:**[&Eff1Out] **Outcome:** [#f00]Failure![/#]\n      --]|\n --%|\n}}\n",
+                "istokenaction": true,
+                "name": "🧑‍🚀NPC",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "\n&{template:default}{{name= 🏔️    Gravity!    🏔️ }}{{High-G =**DM-1 **to all skill checks until acclimatized (1D weeks or automatic with Athletics STR skill).}} {{Low-G=DM-1 to all skill checks until acclimatized (1D weeks or automatic with Athletics DEX skill) }}  {{ Zero-G=**As per Low G,** and using weapons without Zero-G Trait requires Athletics DEX check or miss and spin out of control. Regain control with Athletics DEX check. }}\n",
+                "istokenaction": false,
+                "name": "Gravity",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name= Rumor Categories }} {{ The Ancients= 300,000 years ago.. }} {{ The Aslan=Noble, territorial }} {{ Corporations=out to make a Cr }} {{ Empire of Sindal=3000 years ago }} {{ The Glorious Empire=Aslan, slavers }} {{ Third Imperium=Benevolent Empire  }} {{ General Trojan Reach=tale of this sector  }}   {{ Patrons with Jobs=A fortune to be made  }}   {{Pirates and Raiders=lawless thieves }} {{ A Specific Subsector = star cluster or chain}}  {{ A Specific System=planetary destination }} {{ The Vargr =Cunning and loyal}} {{ The Zhodani = the threat is real! }} \n\n\n",
+                "istokenaction": false,
+                "name": "Rumors",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#6d9eeb",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name= Fly, Dock, & Land - Pilot(DEX) DMs}}{{Fly = Streamlined Hull in Atmo 3+: **DM-2**\nUnStreamlined Hull: **DM-4** }}{{ Dock = With another ship or highport: **DM+2**}}  {{Land = At downport: **DM+2** }}  {{ On Fail=1D Hull damage (ignore armor) }} {{---=-----------------------------}}  {{Skim=Harrier needs ``20`` passes to Refuel and ``24 hours`` to Refine}}  {{Gas =**Giant Layers:**}}  {{ L1= ***Wisp:*** Cannot skim fuel, no sensor interference, no risk of orbital decay. }}  {{ L2 =***Extreme Shallow:*** ODFPL in 8D hours. ``20D min/Fuel Skim Pass`` }} {{  L3 =***Shallow:*** ODFPL in 2D hours. ***Pilot DM-1***  ``4D min/Fuel Skim Pass``  }} {{  L4= ***Deep:*** ODFPL in 2D min. ***Pilot DM-2***  ``2D min/Fuel Skim Pass`` }} {{  L5 =***Extreme Deep:*** ODFPL in 2D min and causes 2D dam/rnd ***Pilot DM-3***   }} {{  L6= ***Depths:*** 2D dam/rnd always. ODFPL in 2D min and causes 6D/rnd, ***Pilot DM-4***  }} {{  L7 =***Abyssal Depths:*** 4D dam/rnd always. Sensors do not work. ***Pilot DM-5***  }} {{  Moving= **Between Layers:** ``Pilot - largest DM`` On FAIL, ship bounces off other layer. Pilot DM-2+Current Layer DM or ship takes [layer#]D in hull dam   }} {{  Sensor =**Checks:** DM-2 per layer between them, not counting Wisp layer  }} {{  Energy =**Weapons:** per layer between ships, not counting Wisp layer: weapon range is halved and each damage die gets DM-1 (Deep: Rng 1/8, 2D Dam =>2D-8)   }} {{  Missile =**Weapons:** Normal dam, must pass Avg (8+) check to cross layer or be destroyed. No Check for entering Wisp, Ext Shallow, or Shallow layers }} {{ODFPL= Orbital Decay From Power Loss}}\n\n",
+                "istokenaction": false,
+                "name": "Fly-Dock-Land-Skim",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "\n\n!script {{\n\n    --h:PlanetSize(\"0\")|80000\n    --h:PlanetSize(\"1\")|160000\n    --h:PlanetSize(\"2\")|320000\n    --h:PlanetSize(\"3\")|480000\n    --h:PlanetSize(\"4\")|640000\n    --h:PlanetSize(\"5\")|800000\n    --h:PlanetSize(\"6\")|960000\n    --h:PlanetSize(\"7\")|1120000\n    --h:PlanetSize(\"8\")|1280000\n    --h:PlanetSize(\"9\")|1440000\n    --h:PlanetSize(\"A\")|1600000\n    --h:PlanetSize(\"B\")|1760000\n    --h:PlanetSize(\"C\")|1920000\n    --h:PlanetSize(\"D\")|2680000\n    --h:PlanetSize(\"E\")|2840000\n    --h:PlanetSize(\"F\")|3000000\n  --s:|PlanetSize\n\n  --/|TITLE CARD DISPLAY\n  --#titlecardbackground|#000000\n  --#tableBorder|3px solid #8B0000;\n  --#evenrowbackground|#D3D3D3\n  --#oddrowbackground|#E5E4E2\n  --#titleFontColor|#FFD700\n  --#noMinMaxHighlight|1\n  --#noRollHighlight|1\n  --#title|Set Course to Gas Giant or Starport: In/Out System Transit Times\n\n\n  --/|set current system size:  Roll set =  ref $\n  --=PlanetSizeKm|[:PlanetSize(\"@{ScriptCards_Storage|SCS_-CurrentSystemSize}\")]\n  \n  --/|get ship Thrust value\n --=Thrust|?{Thrust| 6G, 60 | 1G, 10 | 2G, 20 | 3G, 30 | 4G, 40 | 5G, 50}\n --=ThrustDisplay|[$Thrust]/10\n\n\n  --/|print transit inputs\n  --+System:| @{ScriptCards_Storage|SCS_-CurrentSystemName} [b]UWP:[/b] @{ScriptCards_Storage|SCS_-CurrentSystemUWPOnly} \n  --+100D Limit:|   [$PlanetSizeKm]km.     [b]Thrust[/b]: [$ThrustDisplay]G.\n\n--/| OUTBOUND CALCS\n\n--=A|2*[$PlanetSizeKm]*1000\n--=B|[$A]/[$Thrust]\n--=C|[$B] {SQRT}\n--=OutHrs|[$C]/3600 {FLOOR}\n--=D|[$C]/60 {FLOOR}\n--=E|[$C]/3600 {FLOOR} * 60\n--=OutMin|[$D] - [$E]\n--=F|[$D] * 60\n--=OutSec| [$C] - [$F] {ROUND}\n--/|A[$A] B[$B] C[$C] D[$D] E[$E] F[$F] (debug)\n--+Outbound Full Burn to 100D Limit:|[br] [$OutHrs] hrs, [$OutMin] min, [$OutSec] sec\n\n\n--/| INBOUND CALCS\n\n\n--=A|[$PlanetSizeKm]*1000\n--=B|[$A]/[$Thrust]\n--=C|[$B] {SQRT}\n--=InHrs|2 * [$C]/3600 {FLOOR}\n--=D|2 * [$C]/60 {FLOOR}\n--=E|2 * [$C]/3600 {FLOOR} * 60\n--=InMin|[$D] - [$E]\n--=F|[$D] * 60\n--=InSec| 2 * [$C] - [$F] {ROUND}\n--/|A[$A] B[$B] C[$C] D[$D] E[$E] F[$F] (debug)\n--+Inbound Flip-N-Burn from 100D Limit:|[br] [$InHrs] hrs, [$InMin] min, [$InSec] sec\n\n\n\n--+Transit Time Handout:| [Click Here](http://journal.roll20.net/handout/-NdIWBsn_72lsrb0fY6i)\n\n--+|[c]  [img width=400] https://s3.amazonaws.com/files.d20.io/images/399129390/spwrRo1_mLUjdepEvCuQTw/max.png?1719786449[/img]  [/c]\n\n}}\n\n",
+                "istokenaction": false,
+                "name": "Transit-Time",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default} {{name=Downtime Activities: IN PORT }} {{ Acquire Asset = Buy Stuff, Hire One-Time Help, Seek Rumors, Find Intelligence Asset }}  {{Blow Off Steam = Gamble, Carouse, Explore, Indulge a Vice, ...}}  {{Craft = Build a Physical Thing with access to a Workshop and Fabricators}} {{ Day Labor= Work a Shift and Get Paid}} {{Effect Ship Repairs=Use Spare Parts to fix Critical Hits and Hull Damage (Engr/Mech)}} {{Find Cargo and Passengers = Free Action. See Trade Rules }}  {{ Improve Relations=Develop Intelligence Asset, Improve System Attitude, Improve Faction Alignment }}   {{Long Term Project =  Research, Investigate, Design, ...}}  {{ Recover = Heal Up with Bed Rest}} {{For Details   =See [Downtime Handout](http://journal.roll20.net/handout/-O2MbQEWhlaxPGHXUmc2)    }}\n\n\n\n!   {{ ---= ***IN JUMP SPACE ---***}}  {{Craft = Build a Physical Thing with access to a Workshop and Fabricators}} {{Effect Ship Repairs=Use Spare Parts to fix Critical Hits and Hull Damage (Engr/Mech)}}  {{Long Term Project =  Research, Investigate, Design, ...}}  {{ Recover = Heal Up with Bed Rest}}  {{Training=Mark 1 week of Training  }} ",
+                "istokenaction": false,
+                "name": "Downtime",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default} {{name=Awaken Low Berth Passengers }}   {{ Roll = Medic (EDU, 1Dx10m) DM+2}} {{DM+1=TL12+ Ship}} {{DM-1=Using Emergency Low Berth}} {{DM-2=Non-Human Passenger}} {{On Fail=Passenger Dies}}\n",
+                "istokenaction": false,
+                "name": "Wake-Low-Pass",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "\n\n\n&{template:default} {{name=Ship Repairs }}  {{FIX =**IT YOURSELF**}} {{ Hull Points= Repair 1 Hull Point with \n1T of Spare Parts and Mechanic (EDU, 1 hour) with  DM+2 }}   {{ Destroyed Weapons:=Can't be repaired, must be repurchased  }} {{Critical Hits:= Engr|Mech (EDU, 1D Hours) with DM-Crit Effect }}  {{ Effect =  Tons of Spare Parts Concumed }}  {{ 0-1=1.0T }} {{ 2= 0.8T}} {{ 3=0.6T}} {{ 4=0.4T}} {{ 5=0.2T}} {{ 6=None  }} {{HAVE THE=**STARPORT FIX IT FOR YOU**}}  {{ Full Repair Facilities:=Cr100k * Severity per Critical Area; Cr50k per Hull Point }} {{ Limited Repair Facilities:=Cr100k per Hull Point; Can't fix Critical Hits }}\n \n",
+                "istokenaction": false,
+                "name": "Effect-Repairs",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default} {{name=The Captain's Table }}   {{Tell = a Background Story }} {{Roll= a related Skill.  Gain a Benny and on a...}}  {{10+ = & Hear a Rumor }}  {{ 12+ = & Make a Connection: Contact | Patron}} {{.=Participation is Optional! }}\n",
+                "istokenaction": false,
+                "name": "Captains-Table",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "Click for [Travel Steps Handout](http://journal.roll20.net/handout/-NxPEPUOWzczEbLenY4K)\n\n",
+                "istokenaction": false,
+                "name": "Travel-Steps",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "! 1 AU = 150,000,000km = 150,000,000,000m\n\n\n/desc Time required to travel [[?{How many AU?} ]]  AU's\n/desc with [[?{Thrust?| 1G, 10 | 2G, 20 | 3G, 30 | 4G, 40 | 5G, 50 |  6G, 60 |  7G, 70 | 8G, 80} /10]]G of thrust.\n\n\n/desc Full Burn:[[floor((((2*?{How many AU?}*150000000000)/?{Thrust?})**0.5)/3600)]]hrs,[[floor((((2*?{How many AU?}*150000000000)/?{Thrust?})**0.5)/60) - (floor((((2*?{How many AU?}*150000000000)/?{Thrust?})**0.5)/3600)*60)]]min,[[round((((2*?{How many AU?}*150000000000)/?{Thrust?})**0.5)-floor((((2*?{How many AU?}*150000000000)/?{Thrust?})**0.5)/60)*60)]] sec\n\n/desc Flip-N-Burn:[[floor(2*(((?{How many AU?}*150000000000)/?{Thrust?})**0.5)/3600)]]hrs,[[floor(2*(((?{How many AU?}*150000000000)/?{Thrust?})**0.5)/60) - (floor(2*(((?{How many AU?}*150000000000)/?{Thrust?})**0.5)/3600)*60)]]min,[[round(2*(((?{How many AU?}*150000000000)/?{Thrust?})**0.5)-floor(2*(((?{How many AU?}*150000000000)/?{Thrust?})**0.5)/60)*60)]]sec\n\n! comms lag\n\n/desc Time required for a communication signal to travel ?{How many AU?} AU: \n\n/desc [[{0,floor((?{How many AU?}*150/.299792)/3600)}kh1]]hrs, [[{0,floor((?{How many AU?}*150/.299792)/60) - floor((?{How many AU?}*150/.299792)/3600) * 60}kh1]]min, [[{0,round((?{How many AU?}*150/.299792) - floor((?{How many AU?}*150/.299792)/60)*60)}kh1]]seconds\n",
+                "istokenaction": false,
+                "name": "AU-Travel-Times",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name= Computer Expert Assistance }} {{ SW Package= **Max Skill DM** }} {{ Expert/1=DM-2 (Difficult) }} {{ Expert/2=DM-4 (V. Difficult) }} {{ Expert/3=DM-6 (Formidable)  }} \n\n",
+                "istokenaction": false,
+                "name": "Comp-Expert",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "\n&{template:default}{{name= Ship Skills used for Transit Activities ``Click Token First``}} {{Scan System:=*** PARKER *** [SenseOps](~target|Electronics) DM-2 (Mudshark)  }}  {{Fly/Dock/Land:=*** OLIVER ***  [Pilot](~target|Pilot)  DM-1 }}  {{ Wake Low Passengers: =*** RUHKTAH >> RED *** [Medic](~target|Medic) DM+2  }} {{ Settle New Passengers: =*** RUHKTAH >> PARKER ***  [Steward](~target|Steward) DM+0   }}  {{  Plot a Jump: = *** RENSE ***  [Astrogation](~target|Astrogation) DM+3-Stars-Gas Gi  }}  {{ Jump to Next System: = *** MARA *** [Engineer](~target|Engineer) DM+4+Astro+...  }}   ",
+                "istokenaction": false,
+                "name": "Transit-Skills",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "! System Encounters - Space, Planet, Connections, ...\n\n!script {{\n\n--/|LOAD LIRARY FUNCTIONS\n+++TravellerMg2eLib+++\n\n--/|SET SCRIPT SPECIFIC CARD STYLE\n  -->LibTrav_CardHeader|a;b\n  -->LibTrav_DropDownSystemNames|DropDownSystemNames\n\n--/|system Name drop down\n   --&CurrentSystemName|?{Current System?| @{ScriptCards_Storage|SCS_-CurrentSystemName} |   @{ScriptCards_Storage|SCS_-DropDownNames}   }\n\n--+Current System Name | [&CurrentSystemName]\n\n\n\n\n\n\n\n\n\n   --&StarportCode| @{ScriptCards_Storage|SCS_-CurrentSystemStarport}\n   --&BaseCode| @{ScriptCards_Storage|SCS_-CurrentSystemBases}\n   --&SizeCode| @{ScriptCards_Storage|SCS_-CurrentSystemSize}\n   --&PopCode| @{ScriptCards_Storage|SCS_-CurrentSystemPopulation}\n\n  --/| Class ABC Ports: Ecnounter on 5+; Class DEX Ports: Encounter on 8+\n  --?\"ABC\" -inc [&StarportCode] | =EncounterThreshold;4 | =EncounterThreshold;7\n\n  --/| DMs: Pop 6+, Naval Ba--/| Contact Present in system?\nse DM+1; Scout Base, Class C/X Port DM-1\n\n --=EncounterDM|0\n --?\"012345\" -ninc  [&PopCode] | =EncounterDM;[$EncounterDM]+1\n --?\"CDNKRT\" -inc  [&BaseCode] | =EncounterDM;[$EncounterDM]+1\n --?\"S\" -inc  [&BaseCode] | =EncounterDM;[$EncounterDM]-1\n --?\"CX\" -inc  [&StarportCode] | =EncounterDM;[$EncounterDM]-1\n\n   --+World| @{ScriptCards_Storage|SCS_-CurrentSystemName}  @{ScriptCards_Storage|SCS_-CurrentSystemUWPFull}\n\n--?[&SizeCode] -eq A | =SizeNum;10 | =SizeNum;[&SizeCode]\n--=GasEncounterDistance | 3d6 * 1000\n--=WorldEncounterDistance | [$GasEncounterDistance] * [$SizeNum]\n\n\n--=InBoundEncounterRoll | 2d6 + [$EncounterDM]\n--+InBoundEncounterRoll | [$InBoundEncounterRoll]\n--+EncounterThreshold | [$EncounterThreshold]\n\n--?[$InBoundEncounterRoll] -ge [$EncounterThreshold]    |[\n        --+Inbound Encounter:| Type: [$InBoundEncounterRoll]; Reaction: [[3d6]]; Details: [[3d6]]; Distance: Near Main World = [$WorldEncounterDistance];   Near Gas Giant = [$GasEncounterDistance];\n\n\t--]|\n\n--=OutBoundEncounterRoll | 2d6 + [$EncounterDM]\n--?[$OutBoundEncounterRoll] -ge [$EncounterThreshold]    |[\n        --+OutBound Encounter:| Type: [$OutBoundEncounterRoll]; Reaction: [[3d6]]; Details: [[3d6]]; Distance: Near Main World = [$WorldEncounterDistance];   Near Gas Giant = [$GasEncounterDistance];\n\n\t--]|\n\n\n--/| Contact Present in system?\n--=AcreRoll|2d6\n--+AcreRoll| [$AcreRoll]\n--?[$AcreRoll] -ge 8 |[\n        --+ACRE Present in System!|\n\t--]|\n\n\n\n\n}}\n\n",
+                "istokenaction": false,
+                "name": "__test-changes",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": null,
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default} {{name=Port Relationship with Crew}} {{Haven =ports are either part of the crew's organization, or count them as their own ships. Not only are pirates able to land here, the port’s System Defense Boats and the local population will defend the pirates against enemy ships and pirate hunters.}} {{Friendly= ports are willing accomplices to the crew. While they will not take up arms to defend the crew in open battle, they will do everything else they can to help the crew, such as repairing battle damage without asking questions, providing replacement crew, and fencing stolen goods.}} {{Tolerant ``[LL0-2]``= ports are willing to turn a blind eye to fencing goods, and may even provide repair facilities without too many questions, but are otherwise not involved in piracy. The crew can land freely, but must keep a low profile. }} {{Neutral ``[LL3-5]``= ports are willing to take the crew's money, but offer no protection. If the crew brings trouble, the port authorities will turn on them }} {{Suspicious ``[LL6-9]``=ports are law-abiding and have reason to suspect the crew are pirates, smugglers,, etc. Everything is more difficult at suspicious ports. The crew can still land here, but can expect to be searched or detained.}} {{Unfriendly ``[LL10-11]``=ports do not tolerate the crew's warship. Landing here is not permitted; if the crew try, they will be arrested. If they linger in the system, system defense boats will be deployed to chase them away.}} {{ Hostile ``[LL12+]`` =The crew's ship will be fired upon as soon as it arrives at port. The crew's faces are on wanted holograms throughout the starport; the sensor profile of their ship is logged with every listening post and System Defense Boat in the system. }}",
+                "istokenaction": false,
+                "name": "Port-Relationship",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "! comms lag\n\n/desc Time required for a communication signal to travel ?{M-Kilometers Away} million km: \n\n/desc [[{0,floor((?{M-Kilometers Away|0}/.299792)/3600)}kh1]]hrs, [[{0,floor((?{M-Kilometers Away}/.299792)/60) - floor((?{M-Kilometers Away}/.299792)/3600) * 60}kh1]]min, [[{0,round((?{M-Kilometers Away}/.299792) - floor((?{M-Kilometers Away}/.299792)/60)*60)}kh1]]seconds\n\n! travel times\n\n/desc Time required to travel ?{How many km?} km\n/desc with [[?{Thrust?| 1G, 10 | 2G, 20 | 3G, 30 | 4G, 40 | 5G, 50 | 6G, 60} /10]]G of thrust.\n\n/desc Full Burn:[[floor((((2*?{How many km?}*1000)/?{Thrust?})**0.5)/3600)]]hrs,[[floor((((2*?{How many km?}*1000)/?{Thrust?})**0.5)/60) - (floor((((2*?{How many km?}*1000)/?{Thrust?})**0.5)/3600)*60)]]min,[[round((((2*?{How many km?}*1000)/?{Thrust?})**0.5)-floor((((2*?{How many km?}*1000)/?{Thrust?})**0.5)/60)*60)]] sec\n\n/desc Flip-N-Burn:[[floor(2*(((?{How many km?}*1000)/?{Thrust?})**0.5)/3600)]]hrs,[[floor(2*(((?{How many km?}*1000)/?{Thrust?})**0.5)/60) - (floor(2*(((?{How many km?}*1000)/?{Thrust?})**0.5)/3600)*60)]]min,[[round(2*(((?{How many km?}*1000)/?{Thrust?})**0.5)-floor(2*(((?{How many km?}*1000)/?{Thrust?})**0.5)/60)*60)]]sec\n\n! jump limit transit times\n/desc 100D limit = ?{Planet Size| 0, 100000 | 1, 160000 | 2, 320000 | 3, 480000 | 4, 640000 | 5, 800000 | 6, 960000 | 7, 1120000 | 8, 1280000 | 9, 1440000 | 10, 1600000} km. Thrust = [[?{Thrust| 1G, 10 | 2G, 20 | 3G, 30 | 4G, 40 | 5G, 50 | 6G, 60} /10]]G.\n\n/desc Outbound Full Burn to 100D:[[floor((((2*?{Planet Size}*1000)/?{Thrust})**0.5)/3600)]]hrs,[[floor((((2*?{Planet Size}*1000)/?{Thrust})**0.5)/60) - (floor((((2*?{Planet Size}*1000)/?{Thrust})**0.5)/3600)*60)]]min,[[round((((2*?{Planet Size}*1000)/?{Thrust})**0.5)-floor((((2*?{Planet Size}*1000)/?{Thrust})**0.5)/60)*60)]] sec\n\n/desc Inbound Flip-N-Burn from 100D:[[floor(2*(((?{Planet Size}*1000)/?{Thrust})**0.5)/3600)]]hrs,[[floor(2*(((?{Planet Size}*1000)/?{Thrust})**0.5)/60) - (floor(2*(((?{Planet Size}*1000)/?{Thrust})**0.5)/3600)*60)]]min,[[round(2*(((?{Planet Size}*1000)/?{Thrust})**0.5)-floor(2*(((?{Planet Size}*1000)/?{Thrust})**0.5)/60)*60)]]sec\n\n",
+                "istokenaction": false,
+                "name": "_TRAV-MACROS",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name=Trade Codes}} {{Ab=Data Repository || **Ag** Agricultural}} {{An=Ancient Site || **As** Asteroid Belt}} {{Ba=Barren || **Co** Cold}} {{Cp=Sub-Sector, **Cs** Sector, **Cx** Other Capital  }} {{Cy =Colony || **Da** Danger (Amber Zone, Pop 6-) }} {{ De=Desert World || **Di** Dieback (Extinct Pop) }}  {{Fa=Farming}} {{Fl=Fluid Hydrographics (in place of water)}} {{Fo=Forbidden (Red Zone) || **Fr** Frozen}} {{Ga=Garden World || **He** Hell World}}  {{Hi=High Population || ** Ho** Hot Climate}}  {{Ht=High Technology || ** Ic** Ice Capped}}  {{In=Industrialized || ** Lk** Tide Locked}}  {{Lo=Low Population || ** Lt** Low Technology}}  {{Mi=Mining || ** Mr** Military Rule}}  {{Na=Non-Agricultural || ** Ni** Non-Industrial}}  {{Oc=Ocean World || ** Pa** Pre-Agricultural}}  {{Pe=Penal Colony || ** Ph** Pre-High Population}}  {{Pi=Pre-Industrial || ** Po** Poor}}  {{Pr=Pre-Rich || ** Px** Prison, Exile Camp}}  {{Pz=Puzzle (Amber Zone, Pop 7+) }}  {{Re= Reserve (Nature, Hunting, ...)  || ** Ri** Rich}}{{Sa=Satellite (Main World is Gas Giant's Moon)}}  {{Tr=Tropic || ** Tu** Tundra}}  {{Tz=Twilight Zone (Orbit 0-1) }} {{Va=Vacuum World || ** Wa** Water World}}  {{Xb=Xboat Station}}\n",
+                "istokenaction": false,
+                "name": "Trade-Codes",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "!dltool --report|extra ",
+                "istokenaction": false,
+                "name": "Map-Page-Settings",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": "#ff9900",
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "!HandsUp_raiseHand",
+                "istokenaction": true,
+                "name": "✋RaiseHand",
+                "visibleto": "all"
+            },
+            "macrobar": {
+                "color": null,
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "!HandsUp_raiseHand",
+                "istokenaction": false,
+                "name": "RaiseHand",
+                "visibleto": ""
+            }
+        },
+        {
+            "attributes": {
+                "action": "! PSI Powers Summary\n\n!script {{\n    +++TravellerMg2eLib+++\n    -->LibTrav_CardHeader|a;b\n\n--#title| PSI Powers Summary\n\n--:PROVIDE A BUTTONS FOR POWERS|\n    --+[c] [rbutton]Poke to Show AWARENESS Powers::SHOW_AWARENESS_REFERENCE;0[/rbutton] [/c]|\n    --+[c] [rbutton]Poke to Show CLAIRVOYANCE Powers::SHOW_CLAIRVOYANCE_REFERENCE;0[/rbutton] [/c]|\n    --+[c] [rbutton]Poke to Show TELEKINESIS Powers::SHOW_TELEKINESIS_REFERENCE;0[/rbutton] [/c]|\n    --+[c] [rbutton]Poke to Show TELEPATHY Powers::SHOW_TELEPATHY_REFERENCE;0[/rbutton] [/c]|\n    --+[c] [rbutton]Poke to Show TELEPORTATION Powers::SHOW_TELEPORTATION_REFERENCE;0[/rbutton] [/c]|\n--X|\n\n--:SHOW_AWARENESS_REFERENCE|\n  --+[c] AWARENESS POWERS [/c] |\n  --+[c] Enhanced Strength [/c] | [c] [i] Roll:8+; Time:1Ds; Cost:STR ; Rng:Self [/I] [/c] Convert PSI to STR. Duration = Effect x10 minutes and then declines by 1 point per minute\n  --+[c] Enhanced Endurance [/c] | [c] [i] Roll:8+; Time:1Ds; Cost:END ; Rng:Self [/I] [/c] Convert PSI to END. See Enhanced Strength.\n  --+[c] Inspiration [/c] | [c] [i] Roll:8+; Time:1Ds; Cost:1; Rng:Self [/I] [/c] DM+2 on one check attempted in the next min.\n  --+[c] Suspended Animation [/c] | [c] [i] Roll:8+; Time:1Dm; Cost:3; Rng:Self [/I] [/c] Body activity stopped for 7 days. May awake if external stimulus is given (nudge, alarm, etc.)\n  --+[c] Fortitude [/c] | [c] [i] Roll:10+; Time:1Ds; Cost:Armor ; Rng:Self [/I] [/c] Convert PSI to Armor. Dur = Effect rounds, Stacks with worn armor.\n  --+[c] Regeneration [/c] | [c] [i] Roll:10+; Time:1Dx10s; Cost:Healing; Rng:Self [/I] [/c] Use PSI to heal wounds. May apply multiple times across rests.\n--X|\n\n--:SHOW_CLAIRVOYANCE_REFERENCE|\n    --+[c] CLAIRVOYANCE POWERS [/c] |\n--+[c] Sense [/c] | [c] [i] Roll:6+; Time:1Dx10s; Cost:1; Rng:V. Distant [/I] [/c] Sense most interesting or important feature at the specified range. Effect = level of accuracy and clarity.\n--+[c] Tactical Awareness [/c] | [c] [i] Roll:8+; Time:1Ds; Cost:2; Rng:Long [/I] [/c] Ignore effects of darkness, smoke, fog or other vision impairments. Detect hidden foes within range. Effect = Duration in Rounds\n--+[c] Clairvoyance [/c] | [c] [i] Roll:8+; Time:1Dx10s; Cost:1; Rng:V. Distant [/I] [/c] View situation at specified range. Effect = detail perceived\n--+[c] Clairaudience [/c] | [c] [i] Roll:8+; Time:1Dx10s; Cost:1; Rng:V. Distant [/I] [/c] As Clairvoyance, but with hearing instead of seeing\n--+[c] Clairsentience [/c] | [c] [i] Roll:10+; Time:1Dx10s; Cost:1; Rng:V. Distant [/I] [/c] See and hear at range\n--X|\n\n--:SHOW_TELEKINESIS_REFERENCE|\n  --+[c] TELEKINESIS POWERS [/c] |\n--+[c] Pyrokinesis [/c] | [c] [i] Roll:6+; Time:1Dx10s; Cost:3; Rng:Short [/I] [/c] Raise object's temperature. Effect: 0–4 = target warmer but undamaged; 5–8 = burnt for 1D damage. 9+ = 2D dam & catch fire if flammable.\n--+[c] Telekinesis [/c] | [c] [i] Roll:8+; Time:1Ds; Cost:1 per 10kg; Rng:Short [/I] [/c] Move objects at PC Move. Effect = #Rounds Duration.\n--+[c] Telekinetic Punch [/c] | [c] [i] Roll:8+; Time:1Ds; Cost:1; Rng:Short [/I] [/c] Blast of force. Damage = Effect. Armor protects normal\n--+[c] Flight [/c] | [c] [i] Roll:10+; Time:1Ds; Cost:5; Rng:Short [/I] [/c] Fly short distances. Effect = # Rounds Duration. Speed = 15m/r\n--+[c] Microkinesis [/c] | [c] [i] Roll:10+; Time:1Dx10s; Cost:3; Rng:Short [/I] [/c] Fine manipulation of very small objects in sight. Pick locks, perform microsurgery, sabotage a computer, …\n--X|\n\n--:SHOW_TELEPATHY_REFERENCE|\n  --+[c] TELEPATHY POWERS [/c] |\n  --+[c] Life Detection [/c] | [c] [i] Roll:4+; Time:1Dx10s; Cost:1; Rng:Distant [/I] [/c] Sense number of minds present, general type (animal, human, etc.) and approximate location.\n  --+[c] Mind Link [/c] | [c] [i] Roll:4+; Time:1Dx10s; Cost:1; Rng:Distant [/I] [/c] Communicate with another telepath. Dur: # min = Sum of Effects\n  --+[c] Telempathy [/c] | [c] [i] Roll:6+; Time:1Dx10s; Cost:1; Rng:Distant [/I] [/c] Send or sense emotions in others. Effect = strength of emotion projected.  Telepaths auto shielded\n  --+[c] Read Surface Thoughts [/c] | [c] [i] Roll:8+; Time:1Dx10s; Cost:1; Rng:Distant [/I] [/c] Read active, current thoughts. Telepaths are auto shielded. Effect = Clarity of perceptions.\n  --+[c] Send Thoughts [/c] | [c] [i] Roll:10+; Time:1Dx10s; Cost:1; Rng:Distant [/I] [/c]  Send thoughts to others. Telepaths are auto shielded.\n  --+[c] Suggestion [/c] | [c] [i] Roll:12+; Time:1Dx10s; Cost:1; Rng:Distant [/I] [/c] Implant a thought, idea or command into the mind of another, who interprets it as their own.  Harmful suggestions ignored unless Effect 6+\n  --+[c] Probe [/c] | [c] [i] Roll:12+; Time:1Dx10s; Cost:1; Rng:Distant [/I] [/c] Read innermost thoughts and detect lies. Telepaths are auto shielded.  Effect = Clarity of perceptions.\n  --+[c] Assault [/c] | [c] [i] Roll:14+; Time:1Dx10s; Cost:1; Rng:Distant [/I] [/c] An unshielded mind is KO'd and takes Effect x 3 damage. A shielded mind is an Opposed roll. If attacker wins, target takes Effect x 3 damage.\n  --+[c] Shield [/c] | [c] [i] Roll:Auto; Time:Auto; Cost:0; Rng:Self [/I] [/c] All telepaths have a mental shield that requires no PSI expenditure to maintain. Shield is lowered during the use of telepathic powers.\n--X|\n\n--:SHOW_TELEPORTATION_REFERENCE|\n  --+[c] TELEPORTATION POWERS [/c] |\n  --+[c] Teleport Bare [/c] | [c] [i] Roll:8+; Time:1Ds; Cost:2; Rng:Distant [/I] [/c]  Just your body\n  --+[c] Teleport Light [/c] | [c] [i] Roll:10+; Time:1Ds; Cost:4; Rng:Distant [/I] [/c] Your body, clothes and 10kg of gear\n  --+[c] Teleport Medium [/c] | [c] [i] Roll:11+; Time:1Ds; Cost:6; Rng:Distant [/I] [/c] Your body, clothes and 100kg of gear\n  --+[c] Teleport Heavy [/c] | [c] [i] Roll:12+; Time:1Ds; Cost:8; Rng:Distant [/I] [/c] Your body, clothes and 500kg of gear\n  --+[c] TELEPORTATION NOTES [/c] |\n  --+Gear|Can include your armor\n  --+Destination| Must have a mental image\n  --+On Planet| Jumps beyond visual range leave you disoriented for 2D–Effect x 10s.  Max jump altitude change is 600m/hour\n--X|\n\n}}\n",
+                "istokenaction": true,
+                "name": "🤯PSI",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "&{template:default}{{name=Disabling Wounds}}  {{ DMs= **END DM** (Normal, Unwounded) \n**Final Attack Damage Points** were...\n1-2: DM+4;  3-6:  DM+2\n6-11: DM-2;  12-17: DM-4; 18+: DM-6}} {{Roll = [[2d6]] (No DMs)  }}   {{ .=***RESULT*** }} {{ 1-= Vaporised, shredded, spread all over the landscape or otherwise destroyed in graphic and gruesome fashion. }}   {{ 2–3= The Traveller is either killed outright in a dramatic fashion such as having their head blown off, or lingers just long enough to make a final speech to their friends/ enemies/passers-by. They cannot be saved in either case. }}  {{ 4–5= The Traveller will die unless given prompt medical assistance. If they survive, they will lose the limb that was injured, or an eye, or suffer some similar major permanent injury as determined by the Referee. This can be repaired by cybernetics or regrowth but the process is slow and expensive. Permanently lose 1D from STR, DEX and END }} {{ 6–7= The Traveller will die unless given prompt medical assistance and suffers permanent effects if they survive at all. Permanently lose D3 from STR, DEX and END }} {{ 8–9= The Traveller will die unless given prompt medical assistance and suffers permanent effects if they survive at all. Permanently lose D3 from STR and END }}  {{ 10-11= The Traveller will die unless given prompt medical assistance and suffers permanent effects if they survive at all. Permanently lose 1 point from STR and END }}  {{ 12+= The Traveller is terribly hurt but will somehow cling to life and begin to recover even if medical attention is not provided. Permanently lose 1 point from END }}  \n",
+                "istokenaction": true,
+                "name": "💀3Stat=0",
+                "visibleto": "all"
+            }
+        },
+        {
+            "attributes": {
+                "action": "! System Encounters - Space, Planet, Connections, ...\n\n!script {{\n\n--/|LOAD LIRARY FUNCTIONS\n+++TravellerMg2eLib+++\n\n--/|SET SCRIPT SPECIFIC CARD STYLE\n  -->LibTrav_CardHeader|a;b\n  -->LibTrav_DropDownSystemNames|a\n\n--/|system Name drop down\n   --&CurrentSystemName|?{Current System?| @{ScriptCards_Storage|SCS_-CurrentSystemName} |   @{ScriptCards_Storage|SCS_-DropDownNames}   }\n\n--+Current System Name | [&CurrentSystemName]\n\n\n\n\n\n\n\n\n\n   --&StarportCode| @{ScriptCards_Storage|SCS_-CurrentSystemStarport}\n   --&BaseCode| @{ScriptCards_Storage|SCS_-CurrentSystemBases}\n   --&SizeCode| @{ScriptCards_Storage|SCS_-CurrentSystemSize}\n   --&PopCode| @{ScriptCards_Storage|SCS_-CurrentSystemPopulation}\n\n  --/| Class ABC Ports: Ecnounter on 5+; Class DEX Ports: Encounter on 8+\n  --?\"ABC\" -inc [&StarportCode] | =EncounterThreshold;4 | =EncounterThreshold;7\n\n  --/| DMs: Pop 6+, Naval Ba--/| Contact Present in system?\nse DM+1; Scout Base, Class C/X Port DM-1\n\n --=EncounterDM|0\n --?\"012345\" -ninc  [&PopCode] | =EncounterDM;[$EncounterDM]+1\n --?\"CDNKRT\" -inc  [&BaseCode] | =EncounterDM;[$EncounterDM]+1\n --?\"S\" -inc  [&BaseCode] | =EncounterDM;[$EncounterDM]-1\n --?\"CX\" -inc  [&StarportCode] | =EncounterDM;[$EncounterDM]-1\n\n   --+World| @{ScriptCards_Storage|SCS_-CurrentSystemName}  @{ScriptCards_Storage|SCS_-CurrentSystemUWPFull}\n\n--?[&SizeCode] -eq A | =SizeNum;10 | =SizeNum;[&SizeCode]\n--=GasEncounterDistance | 3d6 * 1000\n--=WorldEncounterDistance | [$GasEncounterDistance] * [$SizeNum]\n\n\n--=InBoundEncounterRoll | 2d6 + [$EncounterDM]\n--+InBoundEncounterRoll | [$InBoundEncounterRoll]\n--+EncounterThreshold | [$EncounterThreshold]\n\n--?[$InBoundEncounterRoll] -ge [$EncounterThreshold]    |[\n        --+Inbound Encounter:| Type: [$InBoundEncounterRoll]; Reaction: [[3d6]]; Details: [[3d6]]; Distance: Near Main World = [$WorldEncounterDistance];   Near Gas Giant = [$GasEncounterDistance];\n\n\t--]|\n\n--=OutBoundEncounterRoll | 2d6 + [$EncounterDM]\n--?[$OutBoundEncounterRoll] -ge [$EncounterThreshold]    |[\n        --+OutBound Encounter:| Type: [$OutBoundEncounterRoll]; Reaction: [[3d6]]; Details: [[3d6]]; Distance: Near Main World = [$WorldEncounterDistance];   Near Gas Giant = [$GasEncounterDistance];\n\n\t--]|\n\n\n--/| Contact Present in system?\n--=AcreRoll|2d6\n--+AcreRoll| [$AcreRoll]\n--?[$AcreRoll] -ge 8 |[\n        --+ACRE Present in System!|\n\t--]|\n\n\n\n\n}}\n\n",
+                "istokenaction": false,
+                "name": "System-Encounters",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": null,
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "\n!script {{\n+++TravellerMg2eLib+++\n  \n-->LibTrav_DropDownSystemNames|DropDownSystemNames\n-->LibTrav_SystemTracker|@{ScriptCards_Storage|SCS_-CurrentSystemName}\n\n\n}}",
+                "istokenaction": false,
+                "name": "RunLibFunctions",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": null,
+                "name": null
+            }
+        },
+        {
+            "attributes": {
+                "action": "! STARPORT\n!\n! Uses Libraries\n!\n! Starport Costs and Services and Current System Details\n!\n\n\n!script {{\n\n  --/|LOAD LIRARY FUNCTIONS\n  +++TravellerMg2eLib+++\n\n \n  --/|GET STARPPORT CODE LETTER\n  --&SP_Code|@{ScriptCards_Storage|SCS_-CurrentSystemStarPort}\n\n  --/| TITLE \n  -->LibTrav_CardHeader|a;b\n  --#title|Starport Services and Costs\n  --#leftsub|System: @{ScriptCards_Storage|SCS_-CurrentSystemName} @{ScriptCards_Storage|SCS_-CurrentSystemUWPOnly} @{ScriptCards_Storage|SCS_-CurrentTradeCodes} [br] Bases: @{ScriptCards_Storage|SCS_-CurrentSystemBases}, TAS Zone: @{ScriptCards_Storage|SCS_-CurrentSystemZone}\n\n\n  --/| BUILD STARPORT RANDOM DETAILS\n  --=1Da| 1d6 * 1000\n  --=1Db| 1d6 * 500\n  --=1Dc| 1d6 * 100\n  --=1Dd| 1d6 * 10\n  --=Time| 1d6\n\n\n  --?[&SP_Code] -eq A |[\n\t   --&Code|\"A\" = Excellent Starport\n     --&Scen|Huge trade volume, shipbuilding. Lots of big ships coming through frequently\n     --&Dock|Cr[$1Da] per week\n     --&Fuel|Refined (Cr500 per ton), Time:[$Time]hr\n     --&Repr|Shipyard (All),[[3d6]]T Spare Parts available @ Cr100k/T [b](2x for Harrier)[/b]; Can replace destroyed weapons;[br][i][b]Full Repairs:[/b][/i] Facilities can fix Critical Hits @ Severity * Cr100k per Critical Area, and  Hull Points @ Cr50k per Point\n  --]|\n  --?[&SP_Code] -eq B  |[\n     --&Code|\"B\" = Good Starport\n     --&Scen|High trade volume, skilled maintenance and repairs, regular passenger and bulk freighter services\n     --&Dock|Cr[$1Db] per week\n     --&Fuel|Refined (Cr500 per ton), Time:[$Time]hr\n     --&Repr|Shipyard (Spacecraft), [[3d6]]T Spare Parts available @ Cr100k/T [b](2x for Harrier)[/b]; Can replace destroyed weapons;[br][i][b]Full Repairs:[/b][/i] Facilities can fix Critical Hits @ Severity * Cr100k per Critical Area, and  Hull Points @ Cr50k per Point\n  --]|\n  --?[&SP_Code] -eq C |[\n     --&Code|\"C\" = Routine Starport\n     --&Scen|Fuel, supplies and some skilled maintenance. Commercial and freighting opportunities for small ships \n     --&Dock|Cr[$1Dc] per week\n     --&Fuel|Un-Refined (Cr100 per ton), Time:[$Time]hr\n     --&Repr|Shipyard (Small Craft), [[2d6]]T Spare Parts available  @ Cr100k/T [b](2x for Harrier)[/b];Cannot replace destroyed weapons;[br][i][b]Full Repairs:[/b][/i] Facilities can fix Critical Hits @ Severity * Cr100k per Critical Area, and  Hull Points @ Cr50k per Point\n  --]|\n  --?[&SP_Code] -eq D |[\n     --&Code|\"D\" = Poor Starport\n     --&Scen|Safe place to land, you can get fuel and supplies\n     --&Dock|Cr[$1Dd] per week\n     --&Fuel|Un-Refined (Cr100 per ton), Time:[$Time]hr\n     --&Repr|No Shipyard, [[1d6]]T Spare Parts available @ Cr100k/T [b](2x for Harrier)[/b] [br][i][b]Limited Repairs:[/b][/i]Facilities can only fix Hull damage @ Cr100k per Hull Point \n  --]|\n  --?[&SP_Code] -eq E |[\n     --&Code|\"E\" = Frontier Starport\n     --&Scen|Safe place to land, may be unmanned \n     --&Dock|Cr0 per week\n     --&Fuel|None\n     --&Repr|None, No Repairs or Spare Parts available\n  --]|\n  --?[&SP_Code] -eq X |[\n     --&Code|\"X\" = No Starport\n     --&Scen|A [Wilderness Landing](`#Wild-Land) is required.  No facilities exist and likely nobody there \n     --&Dock|Cr0 per week\n     --&Fuel|None\n     --&Repr|None, No Repairs or Spare Parts available\n  --]|\n\n  --/| PRINT STARPORT DETAILS\n  --+|[c][b]Starport Rating:[/b] [&Code][/c]\n  --+The Scene:|[&Scen]\n  --+Port Attitude:|@{ScriptCards_Storage|SCS_-CurrentSystemRelationship}\n  --+ Berthing Costs:|[&Dock]\n  --+ Fuel:|[&Fuel] (Harrier = 42T)\n  --+ Services:|[&Repr] [Details](`#Effect-Repairs)\n  --+ ================================= |\n  --+[c]Traveller Map and Wiki URLs:[/c]| \n  --+|[c] https://travellermap.com/  https://wiki.travellerrpg.com/ [/c]\n\n\n\n}}\n\n\n",
+                "istokenaction": false,
+                "name": "Starport",
+                "visibleto": ""
+            },
+            "macrobar": {
+                "color": null,
+                "name": null
+            }
+        }
+    ]
+}
