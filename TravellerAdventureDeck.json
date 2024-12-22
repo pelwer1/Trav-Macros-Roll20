@@ -1,0 +1,535 @@
+[
+  {
+    "count": 2,
+    "color": "black",
+    "title": "Lucky Break",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | dice-fire | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to make their next roll with a <b>Boon.</b> ",
+      "fill | 4",
+      "subtitle | Well, that was lucky!"
+    ],
+    "tags": []
+  },
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Inspiration",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | dice-fire | 100",
+      "fill | 4",
+      "text | Play during combat to have all Travellers make all rolls with a <b>Boon</b> this round. ",
+      "fill | 4",
+      "subtitle | We only have one shot at this. It’s all or nothing, gang!"
+    ],
+    "tags": []
+  },
+  {
+    "count": 2,
+    "color": "black",
+    "title": "Bad Break",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | rolling-dices  | 100",
+      "fill | 4",
+      "text | Play on an Enemy to force them to make their next roll with a <b>Bane.</b> ",
+      "fill | 4",
+      "subtitle | Sux 4 u!"
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Bullseye",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | bullseye | 100",
+      "fill | 4",
+      "text | Play to have a single <b>Ranged</b> attack do +2D damage. ",
+      "fill | 4",
+      "subtitle | Great shot kid that was one in a million!"
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Deadly Blow",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | crossed-sabres  | 100",
+      "fill | 4",
+      "text | Play to have a single <b>Melee</b> attack do +2D damage. ",
+      "fill | 4",
+      "subtitle | That's gonna leave a mark!"
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 2,
+    "color": "black",
+    "title": "Acrobatics",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | dice-shield  | 100",
+      "fill | 4",
+      "text | Play to allow a single Traveller to ignore all negative consequences from <b>Reactions</b> this round. ",
+      "fill | 4",
+      "subtitle | Nimble little minx, isn't she?"
+    ],
+    "tags": []
+  },
+      {
+    "count": 1,
+    "color": "black",
+    "title": "Last Stand",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | dice-shield  | 100",
+      "fill | 4",
+      "text | Play to allow all Travellers to ignore all negative consequences from <b>Reactions</b> this round. ",
+      "fill | 4",
+      "subtitle | No Retreat.  No Surrender."
+    ],
+    "tags": []
+  },
+
+
+  {
+    "count": 2,
+    "color": "black",
+    "title": "Epiphany",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | inspiration  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow something they never understood before to suddenly 'click' and gain <b>Level 1</b> in any Skill they choose for the remainder of this game session.",
+      "fill | 4",
+      "subtitle | Beginner's Luck!"
+    ],
+    "tags": []
+  },
+  
+
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Hidden Stash",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | backpack | 100",
+      "fill | 4",
+      "text | Play to have a Traveller scrounge up a mundane necessity of some sort, such as food and water, a power pack, a box of ammo, enough money for a room, a usefull tool, etc. ",
+      "fill | 4",
+      "subtitle | Huh, I forgot I had that!"
+    ],
+    "tags": []
+  },
+  
+  
+    {
+    "count": 2,
+    "color": "black",
+    "title": "Get a Clue",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | uncertainty  | 100",
+      "fill | 4",
+      "text | Play this card for advice from the GM on how to resolve a current predicament or problem; to have a prisoner tell all they know; or to find all the clues or evidence in a particular scene.",
+      "fill | 4",
+      "subtitle | Wait! I have an idea!"
+    ],
+    "tags": []
+  },
+  
+    {
+    "count": 1,
+    "color": "black",
+    "title": "Lucky Mag",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | ammo-box | 100",
+      "fill | 4",
+      "text | Play to give a Traveller's weapon a new <b>Trait</b> this round.  Choose from Blast 3, Armor Piercing 3, Auto 3, Fire, Smart, Smasher, Stun, or Zero-G. ",
+      "fill | 4",
+      "subtitle | I've been saving this... "
+    ],
+    "tags": []
+  },
+
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Malfunction",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | breaking-chain  | 100",
+      "fill | 4",
+      "text | Play to cause a device to malfunction in some way: a gun jams, a power cable breaks, etc. The device can be fixed by 1D x 10 minutes work and an appropriate Skill roll. If part of a larger device, like a vehicle or spacecraft, roll a Critical Hit instead.",
+      "fill | 4",
+      "subtitle | No, no, no!  Not Now!"
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Walk It Off",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | sticking-plaster  | 100",
+      "fill | 4",
+      "text | Play to allow a Traveller to stay conscious after having their second attribute go to zero.",
+      "fill | 4",
+      "subtitle | On your feet soldier!"
+    ],
+    "tags": []
+  },
+
+
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Noble Sacrifice",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | punch-blast  | 100",
+      "fill | 4",
+      "text | Play when a nearby ally within 6m suffers damage to take the damage result yourself and the Travellers gain one Gambit.",
+      "fill | 4",
+      "subtitle | Taking one for the team!"
+    ],
+    "tags": []
+  },
+
+
+
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Teamwork",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | team-upgrade  | 100",
+      "fill | 4",
+      "text | The Effect bonus of all <b>Task Chain</b> rolls is doubled this round. This applies to all allied characters.",
+      "fill | 4",
+      "subtitle | On my mark...."
+    ],
+    "tags": []
+  },
+
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Love Interest",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | chained-heart  | 100",
+      "fill | 4",
+      "text | Play on a nonplayer character with at least a neutral attitude towards the Travellers. The target (eventually) falls in love with one of the Travellers. Which one? They may tag along on their adventures or help in various ways, but also get into trouble on occasion. Add them as an Contact.",
+      "fill | 4",
+      "subtitle | Have we met before?"
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Contact",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | shaking-hands  | 100",
+      "fill | 4",
+      "text | A Traveller finds a Contact or Ally from their past who helps them with their current situation.  Who are they?  Why are they here? How do they help you?",
+      "fill | 4",
+      "subtitle | Reggie you old scoundrel!  How have you been?"
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Turncoat",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | double-face-mask  | 100",
+      "fill | 4",
+      "text | A Traveller somehow convinces a foe to perform a small favor such as helping them escape, revealing the location of their boss, etc. Describe how they did it. (offered a deal, bribe, favor, etc.)",
+      "fill | 4",
+      "subtitle | So, how much are they paying you?"
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Betrayed",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | shadow-follower  | 100",
+      "fill | 4",
+      "text | A trusted friend turns against the Travellers, allying with your foes and spilling your secrets. Describe how they were turned and what they shared. Travellers gain 2 Gambits.",
+      "fill | 4",
+      "subtitle | Nick, you poisonous little snake!"
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Concierge Service",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | coffee-cup | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Medic and Steward",
+      "fill | 4",
+      "subtitle | Right this way sir.  We have everything prepared just for you."
+    ],
+    "tags": []
+  },
+
+
+
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Merchant of Venus",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | pay-money  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Broker and Streetwise",
+      "fill | 4",
+      "subtitle | Have I got a deal for you!"
+    ],
+    "tags": []
+  },
+
+
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Smooth Talker",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | talk  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Persuade and Diplomat",
+      "fill | 4",
+      "subtitle | Now we're talking!"
+    ],
+    "tags": []
+  },
+
+
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Rally to Me",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | conqueror  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Tactics and Leadership",
+      "fill | 4",
+      "subtitle | We're gonna make it out of this."
+    ],
+    "tags": []
+  },
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Liason",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | congress  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Admin and Advocate",
+      "fill | 4",
+      "subtitle | It's just red tape and bureaucracy. I love this stuff!"
+    ],
+    "tags": []
+  },
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Way Finder",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | compass | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Astrogate and Navigate",
+      "fill | 4",
+      "subtitle | Find a shortcut through time and space?  No problem."
+    ],
+    "tags": []
+  },
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Mend and Make",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | tinker  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Engineer and Mechanic",
+      "fill | 4",
+      "subtitle | Never tell them how long its really going to take."
+    ],
+    "tags": []
+  },
+
+
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Underworld Ties",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | spy  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Carouse, Gambling, and Deception",
+      "fill | 4",
+      "subtitle | Maybe its time for a walk on the wild side."
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Baby Driver",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | steering-wheel  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Drive, Fly, Pilot, and Seafarer",
+      "fill | 4",
+      "subtitle | Once upon a pair of wheels, I hit the road and I'm gone!"
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Hide, Seek, and Explode",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | time-dynamite  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Explosives and Stealth",
+      "fill | 4",
+      "subtitle | Keep quiet and stay in the shadows until the explosions start."
+    ],
+    "tags": []
+  },
+  
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Survivor",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | campfire  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Survival, Recon, and Vacc Suit",
+      "fill | 4",
+      "subtitle | You can't just leave me here in the middle of nowhere!"
+    ],
+    "tags": []
+  },
+  
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Information Processing",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | rule-book  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Investigate and Electronics",
+      "fill | 4",
+      "subtitle | Time to knock on doors, physical and virtual, and ask some questions."
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Psionic Inspiration",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | rule-book  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using PSI Powers for the remainder of this encounter or scene.",
+      "fill | 4",
+      "subtitle | I think I've got this figured out!"
+    ],
+    "tags": []
+  },
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Psionic Restoration",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | rule-book  | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to immediately recover 2D PSI points. Excess points last until used.",
+      "fill | 4",
+      "subtitle | Pure energy baby!"
+    ],
+    "tags": []
+  },
+
+
+
+
+  {
+    "count": 1,
+    "color": "black",
+    "title": "Professional Touch",
+    "icon_back": "space-suit",
+    "contents": [
+      "icon | erlenmeyer | 100",
+      "fill | 4",
+      "text | Play on a Traveller to allow them to roll with a <b>Boon</b> when using these skills this session: Animals, Art, Language, Science, and Profession ",
+      "fill | 4",
+      "subtitle | Wait!  I had a job once where we did this."
+    ],
+    "tags": []
+  }
+]
+
+
+
+
+
+

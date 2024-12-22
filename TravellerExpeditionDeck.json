@@ -1,0 +1,152 @@
+[
+    {
+        "count": "1",
+        "color": "indigo",
+        "title": "Rules",
+        "icon_back": "bubble-field",
+        "contents": [
+            "icon | rule-book | 100",
+            "fill | 4",
+            "bullet | GM determines expedition distance and duration",
+            "bullet | GM needs to setup five tables for the expedition: Discovery 2 (good, helpful, interesting) , Danger(incl 2 Enemy,1 ambush 2 Hazard to endure) Obstacle 2(to avoid, overcome),  Fatigue, Ext Fat, Insurmount, Confluence, Quiet day of travel,   and 2 Breakdown.",
+            "bullet | Trav journies have Incidents (obstacles, breakdowns, fatigue), Events (interesting stuff on the planet, Discoveries), and Encounters (local wildlife, bad guys, etc)",
+
+            "fill | 4",
+            "bullet | Crew tracks food and fuel.",
+            "bullet | Crew rolls Recon-Survival Task Chain every Leg.  Effect 4+ allows the crew to discard one card for that leg.",
+            "bullet | Adding a leg should also have consequences for the team - miss takeoff, more enemies arrive, more eggs hatch, sick passenger get worse, ...",
+            "fill | 4"
+        ],
+        "tags": []
+    },
+    {
+        "count": "2",
+        "color": "indigo",
+        "title": "Discovery",
+        "icon_back": "bubble-field",
+        "contents": [
+            "icon | distress-signal | 100",
+            "fill | 4",
+            "text | The crew finds something useful or interesting. Roll on the <b>Discovery Table.</b> ",
+            "fill | 4"
+        ],
+        "tags": []
+    },
+    {
+        "count": "2",
+        "color": "indigo",
+        "title": "Enemy",
+        "icon_back": "bubble-field",
+        "contents": [
+            "icon | alien-bug | 100",
+            "fill | 4",
+            "text | A threat appears! Roll on the <b>Enemy Table.</b> ",
+            "fill | 4"
+        ],
+        "tags": []
+    },
+    {
+        "count": "1",
+        "color": "indigo",
+        "title": "Ambush",
+        "icon_back": "bubble-field",
+        "contents": [
+            "icon | alien-skull | 100",
+            "fill | 4",
+            "text | Creatures or enemies attack from ambush! Roll on the <b>Enemy Table,</b> but the foes attack with surprise.",
+            "fill | 4"
+        ],
+        "tags": []
+    },
+    {
+        "count": "2",
+        "color": "indigo",
+        "title": "Obstacle",
+        "icon_back": "bubble-field",
+        "contents": [
+            "icon | vortex | 100",
+            "fill | 4",
+            "text | A barrier of some sort blocks the expedition’s way. Roll on the <b>Obstacle Table.</b>",
+            "fill | 4"
+        ],
+        "tags": []
+    },
+    {
+        "count": "2",
+        "color": "indigo",
+        "title": "Hazard",
+        "icon_back": "bubble-field",
+        "contents": [
+            "icon | burning-meteor | 100",
+            "fill | 4",
+            "text | The environment turns dangerous. Roll on the <b>Hazard Table.</b>",
+            "fill | 4"
+        ],
+        "tags": []
+    },
+    {
+        "count": "2",
+        "color": "indigo",
+        "title": "Insurmountable Obstacle",
+        "icon_back": "bubble-field",
+        "contents": [
+            "icon | death-star | 100",
+            "fill | 4",
+            "text | A daunting barrier appears.  If this card cannot be discarded by the Recon-Survival roll, add one leg to the length of the Expedition.",
+            "fill | 4"
+        ],
+        "tags": []
+    },
+    {
+        "count": "2",
+        "color": "indigo",
+        "title": "Breakdown",
+        "icon_back": "bubble-field",
+        "contents": [
+            "icon | beam-satellite | 100",
+            "fill | 4",
+            "text | A vital piece of equipment fails. Roll on the <b>Breakdown Table.</b>",
+            "fill | 4"
+        ],
+        "tags": []
+    },
+    {
+        "count": "2",
+        "color": "indigo",
+        "title": "Confluence of Events",
+        "icon_back": "bubble-field",
+        "contents": [
+            "icon | eclipse | 100",
+            "fill | 4",
+            "text | Immediately draw two new cards and combine the results. This card may not be discarded.",
+            "fill | 4"
+        ],
+        "tags": []
+    },
+    {
+        "count": "2",
+        "color": "indigo",
+        "title": "Fatigue",
+        "icon_back": "bubble-field",
+        "contents": [
+            "icon | astronaut-helmet | 100",
+            "fill | 4",
+            "text | A difficult path wears on the crew.  Make and END check or become Fatigued (DM-2) until you get 8 hours of rest.",
+            "fill | 4"
+        ],
+        "tags": []
+    },
+    {
+        "count": "2",
+        "color": "indigo",
+        "title": "Extreme Fatigue",
+        "icon_back": "bubble-field",
+        "contents": [
+            "icon | space-suit | 100",
+            "fill | 4",
+            "text | A very difficult path wears on the crew.  Make and END DM-2 check or become Fatigued (DM-2) until you get 8 hours of rest.",
+            "fill | 4"
+        ],
+        "tags": []
+    }
+]

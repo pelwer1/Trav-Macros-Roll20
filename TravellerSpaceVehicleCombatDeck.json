@@ -1,0 +1,579 @@
+[
+  {
+    "count": 1,
+    "color": "darkblue",
+    "title": "0: SPACE COMBAT Setup",
+    "contents": [
+      "subtitle | <b>SENSOPS, CAPTAIN, PILOT</b>",
+      "subtitle | <center>6 Minute Combat Rounds</center>",
+      "fill | 1",
+      "section | <b>Determine Surprise (All Sides Roll)</b>",
+      "property | Electronics(Sensors,INT) ±DMs |<br>On Failure: Surprised = No Actions 1st round",
+      "section | <b>Assign Duty Stations</b>",
+      "property | Human and Computer | <br>e.g. Intellect+Expert or Virtual Crew",
+      "section | <b>Determine Engagement Range</b>",
+      "property | Near Planet: | 3D x UWP Size# x 1000",
+      "property | Near Gas Giant: |  3D x 1000",
+      "property | Use 2D | if Surprise was achieved ",
+      "section | <b>Naval Tactics (If !Surprised)</b>",
+      "property | Captains roll Opp Tactics(Naval,EDU) |+ SW DMs (BS).  Apply ±Effect to Initiative)",
+      "section | <b>Determine Each Ship's Initiative</b>",
+      "property | Pilot(DEX) + Ship Thrust Rating ±Tactics Eff | <br>PCs win Ties (Holographic Controls DM+2)",
+      "section | <b>Execute Steps 1-4 in Initiative Order</b>",
+      "property | All Ships Complete All Steps on a Card |<br>before moving on to the next card",
+	  "fill | 11"
+    ],
+    "tags": [],
+    "icon": "bubble-field",
+    "card_width": "3in",
+    "card_height": "4.5in"
+  },
+
+
+
+  {
+    "count": 1,
+    "color": "darkblue",
+    "title": "1: MANEUVER Step",
+    "icon_back": "spiky-field",
+    "contents": [
+      "subtitle | <b>PILOT, SENSOPS</b>",
+      "fill | 1",
+      "section | <b>Move Ships</b>",
+      "property | Allocate Thrust | to move relative to target",
+      "fill | 1",
+      "section | <b>Launch, Move and Recover Fighters</b>",
+      "property | Allocate Thrust | to move relative to target",
+  	  "fill | 1",
+      "section | <b>Initiate Dogfights</b>",
+      "property | Dogfight Starts | automatically at Close Range",
+      "bullet   | <b>Resolve Dogfight Fully</b> before continuing",
+      "fill | 1",
+      "section | <b>Move Missiles</b>",
+      "property | Apply Thrust 10/15 | to move relative to target. Missiles have 10 rounds of fuel.",
+      "fill | 1",
+      "section | <b>Combat Maneuvering</b>",
+      "property | Spend 1 Thrust | on any of the following:",
+      "bullet   | <b>Aid Gunners</b> DM±Pilot Skill # on <b>ALL</b> Gunnery",
+      "bullet   | <b>Dock for Boarding</b> Pilot(DEX), Opp if Resisted",
+      "property | OR Save Thrust| for Evasive Actions in Attack Steps",
+      "fill | 1",
+      "icon | plane-pilot | 50"
+    ],
+    "tags": [],
+    "icon": "move",
+    "card_width": "3in",
+    "card_height": "4.5in"
+  },
+
+
+
+   {
+    "count": 1,
+    "color": "darkblue",
+    "title": "2: MISSILE Att-React-Dam",
+    "icon_back": "spiky-field",
+    "contents": [
+      "subtitle | <b>GUNNER, PILOT, SENSOPS</b>",
+      "section  | <b>Resolve Missile Strikes</b>",
+      "property | #1 Missile Point Defense: | Close/Adj Range Only",
+      "bullet   |   Turrets: Fighter, Laser, or Sand -  No Barbs/Bays",
+      "bullet   |   Gunner(DEX) + Laser DM + Aid DM + FC SW DM",
+      "bullet   |   #Missiles Destroyed = Gunner Roll Effect",
+      "property | #2 Evasive Action: | Pilot(DEX)",
+      "bullet   |   DM±TC Pilot Effect on 1 Salvo per 1 Thrust ",
+      "property | #3 Roll Missile Attack (8+) ➡️ Note [Attack Eff]|",
+      "bullet   |   2D + DM+1 per missile in salvo + DM±Evasive TC Eff + DM+Smart Trait ± SW DMs (LC, EV)",
+      "bullet   |   Missiles fired at Distant suffer Attack DM-2 🔴",
+      "bullet   |   Missiles fired at Adj/Close lose Smart trait",
+      "property | #4 Determine Missile Damage: | ",
+      "bullet   |   Roll for 1 Missile and Deduct Target Armor",
+      "bullet   |   Multiply by <b>[Attack Eff]:</b> Min 1, Max #Missiles",
+      "bullet   |   <u>Normal Missile:</u> R:Dist, 4D+, Smart",
+      "bullet   |   <u>Nuke:</u> R:Dist, 1DD+, Smart, 2dx60Rads Blast10",
+      "property | #5 Determine Critical Hits: | Roll 2D",
+      "bullet   |   1 Crit = Attack Effect 6+ or 10% Hull Reduction",
+      "property | #6 Launch New Missile Salvos | (Pilot Ok to Launch)",
+      "bullet   |   Note Salvo#, Source & Target. Move Thrust, 🔴",
+      "property | #7 Reduce Missiles(12/turret) & Sand(20/turret) | Determine if Reload Action needed"
+    ],
+    "tags": [],
+    "card_width": "3in",
+    "card_height": "4.5in",
+    "icon": "missile-swarm"
+
+  },
+
+   {
+    "count": 1,
+    "color": "darkblue",
+    "title": "3: ENERGY Att-React-Dam",
+    "icon_back": "spiky-field",
+    "contents": [
+      "subtitle | <b>GUNNER, PILOT</b>",
+      "section  | <b>Resolve Energy Weapon Strikes</b>",
+      "property | #1 Disperse Sand: | (Adjacent Ally OK)",
+      "bullet   |   Gunner(DEX) + Aid DM + FC SW DM",
+      "bullet   |   Armor+1D+Eff on 1 Energy Attack per 1 Canister ",
+      "property | #2 Evasive Action: | Pilot(DEX)",
+      "bullet   |   DM±Pilot TC Eff on 1 Energy Attack per 1 Thrust ",
+      "property | #3 Roll Energy Weapon Attack: | Gunner(DEX) + DM±Evasive TC Eff + Laser Type DM + Range DM + Target Size DM - Aim DM + Pilot Aid DM + Sensor Lock DM 🟢 +  SW DMs (FC, AFC, EV) ",
+      "bullet   |   <u>Laser Type Pulse/Beam:</u> DM+2/+4",
+      "bullet   |   <u>Range Sht/Lng/VLng/Dis:</u> DM+1/-2/-4/-6",
+      "bullet   |   <u>Target Size: </u> Turret: per Full 1000T: DM+1 (Max DM+6); Bay: <2kT DM-2, <100T DM-4",
+      "bullet   |   <u>Pilot with Gunnery</u> may fire one turret w/DM-2",
+      "property | #4 Energy Weapon Damage: | Turret 1x(2x,3x)",
+      "bullet   |   <u>Beam Laser:</u> R:Med, 1D(+1/+2) ",
+      "bullet   |   <u>Pulse Laser:</u> R:Long, 2D(+2/+4)",
+      "bullet   |   <u>Part Barb:</u> R:V Long, 4Dx3, Rad (<u>Bay</u> 6Dx10)",
+      "property | #5 Critical Hits: | Roll 2D or Choose Location if Aim",
+      "bullet   |   1 Crit = Attack Effect 6+ or 10% Hull Reduction",
+      "property | #6 Reduce Sand (20/turret) | ",
+      "bullet   |   Determine if Reload Action needed"
+    ],
+    "tags": [],
+    "card_width": "3in",
+    "card_height": "4.5in",
+    "icon": "crosshair"
+
+  },
+
+
+   {
+    "count": 1,
+    "color": "darkgreen",
+    "title": "4: ACTIONS Step",
+    "icon_back": "spiky-field",
+    "contents": [
+		"section | <b>ANY CREW Actions</b>",
+		"property | Change Station |Move to a new Crew Duty Station <br>(Free Action when not Dogfighting)",
+		"property | Change Running Software |Change Active Computer SW Suite with Elect(Computers,EDU). On Fail,  No Change Occurs.  On Effect -6, System Reboots as per Crit table. (Pilot OK w/DM-2)",
+		"fill | 1",
+		"icon | captain-hat-profile | 50",
+		"section | <b>CAPTAIN Actions</b>",
+		"property | Improve Initiative | Leadership(SOC) to add ±Effect to Initiative next round. (Pilot OK w/DM-2) ",
+		"fill | 1",
+		"icon | medical-pack | 50",
+		"section | <b>SURGEON Actions</b> (Med Bay DM+1)",
+		"property | Treat Wounded Crew | Medic(EDU) DM-Crit Severity to reduce Crew Critical Severity by 1",
+		"property | Treat Wounded Travellers| Medic(EDU) to perform First Aid on PCs",
+		"fill | 3"
+    ],
+    "tags": [],
+    "icon": "button-finger",
+    "card_width": "3in",
+    "card_height": "4.5in"
+  },
+
+
+
+
+   {
+    "count": 1,
+    "color": "saddlebrown",
+    "title": "DOGFIGHT!!!",
+    "icon_back": "spiky-field",
+    "contents": [
+      "subtitle | <b>PILOT, GUNNER</b>",
+      "subtitle | <center>6 Second Combat Rounds</center>",
+      "fill | 1",
+      "section  | <b>Resolve the Dogfight</b>",
+      "property |  Finish Dogfight | before returning to Space Combat",
+      "property |  Escaping Dogfight | Requires greater Thrust or an Enemy willing to let you escape",
+      "property |  Each Round: Opp Pilot(DEX) | with DMs:",
+      "bullet   |   <b>[Note The Effect!!]</b>",
+      "bullet   |   Ship is >50/>100 tons:  DM-1/-2",
+      "bullet   |   Each additional enemy in the Dogfight: DM-1",
+      "bullet   |   Per Thrust spent on Dogfighting: DM+1",
+      "property |  If the Opposed Pilot Result is a ...  |",
+      "bullet   |   <b>Tie:</b> Only turret attacks allowed this round",
+      "bullet   |   <b>Loser:</b> Gets DM-2 to Attacks this round ",
+      "bullet   |   <b>Winner:</b> <b>(1)</b> Gets DM+2 to Attacks this round; <b>(2)</b> Sets fire arcs for Winner and Loser; <b>(3)</b> Gets Pilot <b>Effect</b> as +DM to Opp Pilot next round",
+      "property  |  Crew Action Phase |",
+      "bullet    |    All Crew Actions are 1D min Extended Tasks. Go faster: 1Dx10s/1D rnd/1 rnd = DM-2/-4/-6",
+      "property  |  Combat Reactions |",
+      "bullet    |    <u>Evasive Action</u>, <u>Point Defense</u>, and <u>Disperse Sand</u> are all valid Reactions in a Dogfight",
+      "fill | 5"
+    ],
+    "tags": [],
+    "icon": "spiky-field",
+    "card_width": "3in",
+    "card_height": "4.5in"
+  },
+
+
+
+   {
+    "count": 1,
+    "color": "darkgreen",
+    "title": "ENGINEER Actions",
+    "icon_back": "spiky-field",
+    "contents": [
+      "icon | tinker | 50",
+      "fill | 1",
+      "section | <b>Overload Maneuver Drive</b>",
+      "property |  Engr(M-Drive,INT) w/DM-2: |  +1 Thrust next rnd. Eff-6=M-Drive Crit. Add'l tries at cumulative DM-2",
+      "fill | 1",
+      "section | <b>Repair a System</b>",
+      "property | Engr(Specialty,INT) + DM-Crit Sev + AR SW DM: |",
+      "bullet | Reduces Crit Sev by 1 step",
+      "bullet | Cannot repair Hull or Destroyed areas",
+      "bullet | Cumulative DM+1 per round spent repairing",
+      "bullet | Repair Drones add +1 Repair Roll per round",
+      "bullet | Fix lasts 1D hours",
+      "fill | 1",
+      "section | <b>Combat Jump</b>",
+      "property | Astro(EDU) + Engr(Jump,EDU)  TC w/DM-2:| Other Jump DMs as normal (distance, jump limit, etc.) ",
+      "fill | 1",
+      "section | <b>Offline a System</b>",
+      "property | Engr(Power,EDU):  |  Offline 1 system to save power",
+      "fill | 1",
+      "section | <b>Overload Power Plant</b>",
+      "property | Engr(Power,INT) w/DM-2 |  +10% Power next rnd. Eff-6=Power Crit. Add'l tries at cumulative DM-2",
+      "fill | 11"
+    ],
+    "icon": "tinker",
+    "tags": [],
+    "card_width": "3in",
+    "card_height": "4.5in"
+  },
+
+
+
+ 
+
+   {
+    "count": 1,
+    "color": "darkgreen",
+    "title": "GUNNER Actions",
+    "icon_back": "spiky-field",
+    "contents": [
+      "icon | tesla-turret | 50",
+      "fill | 1",
+      "section | <b>Reload Turret</b>",
+      "property | Reload One Turret's Ammunition  | and reduce ammunition stores.",
+      "fill | 1",
+      "subtitle | REFERENCE SECTION",
+      "section| <center>Double and Triple Turrets</center>",
+      "property|With Different Weapons| only one type may be used in a single combat round",
+      "property|With Same Weapons| One attack roll and each additional weapon adds +1 per damage die",
+      "fill | 1",
+      "section| <center>Damage Multipliers (non-Missiles)</center>",
+      "property| (Roll Damage - Armor - AP) x Multiplier |",
+      "bullet|Barbette: x3",
+      "bullet|Bay Small/Medium/Large:  x10/x20/x100<br>Target Size DMs: <2kT DM-2, <100T DM-4 ",
+      "bullet|Spinal Mount: x1000; Target Size DMs: <br><10kT DM-4, <5kT DM-8, Can't Attack <2000T<br>Attacking Ship Range DMs (Adj/Clo/Sho):<br> <10kT:DM-4/-2/-1; <50kT:DM-6/-4/-2<br> <250kT:DM-8/-6/-4; >250kT:DM-10/-8/-6",
+	  "fill | 11"
+    ],
+    "icon": "tesla-turret",
+    "tags": [],
+    "card_width": "3in",
+    "card_height": "4.5in"
+  },
+
+
+   {
+    "count": 1,
+    "color": "darkgreen",
+    "title": "SENSOP Actions",
+    "icon_back": "spiky-field",
+    "contents": [
+      "icon | radar-sweep | 50",
+      "fill | 1",
+      "property | | <center><b>NOTE:</b> All Rolls <b>must</b>  include SensOp DMs shown in <i>REFERENCE</i> section below! </center>",
+      "section | <b>Sensor Target Lock</b>",
+      "property | Elec(Sensor,EDU) | Gain Attack DM+2 on a Target 🟢",
+      "fill | 1",
+      "section | <b>Electronic Warfare</b> (EW)",
+      "property | Jam Comms: Opp Elec(Comms,EDU)  | <br>Requires Military Grade Sensors 🟤",
+      "property | Break Target Lock: Opp Elec(Sensor,EDU) | <br>Breaks Enemy Target Lock",
+      "property | Screen Missiles: Elec(Sensor,EDU) w/DM-2 | ",
+      "bullet | Effect = #Missiles destroyed in 1 salvo",
+      "bullet | May perform Screen Missiles for other ships if those Ships are at Close/Adj Range",
+      "fill | 1",
+      "subtitle | REFERENCE SECTION",
+      "section| <center>SensOp DMs</center>",
+      "property|Sensor Grade: |   Civ/Mil/Imp/Adv DM-2/0/+1/+2",
+	  "property|Extended Sensor Array: | DM+2 if Thrust=0",
+      "property|External Sensor Array: | DM+2 if Deployed",
+      "property|Countermeasures Suite: | DM+4/+6(Military) to EW",
+      "property| Stealth Hull |B&I/E/A DM-2/-4/-6 on Sensor Lock",
+      "fill | 1"
+    ],
+    "icon": "radar-sweep",
+    "tags": [],
+    "card_width": "3in",
+    "card_height": "4.5in"
+  },
+
+
+	{
+		"count": 1,
+		"color": "maroon",
+		"title": "MARINE Actions",
+		"icon_back": "spiky-field",
+		"contents": [
+			"icon | space-suit | 50",
+			"fill | 1",
+			"section | <b>Boarding Action</b>",
+			"property | Launch a Boarding Action | Once Ships in Adjacent Range, using docking, small craft, or sealed suits   ",
+			"fill | 1",
+			"property | Repel Boarders | (Reaction)",
+			"bullet |<b>Unused Sandcaster:</b> Not Docked, Boarders 8D",
+			"bullet |<b>Trapped Airlock:</b> Using Airlock, Boarders 3D-8D",
+			"fill | 1",
+			"property | Boarding Action Steps | (2D Dogfight Rounds)",
+			"bullet| Attacker and Defender both roll 2D",
+			"bullet| Apply  Boarding Action and PC DMs (see below)",
+			"bullet| Calculate Attack Total minus Defender Total",
+			"bullet| See <b>Boarding Actions Results</b> card",
+			"fill | 1",
+			"property | Boarding Action DMs |",
+			"bullet | Superior Armor/Weapons: DM+1 (each)",
+			"bullet | Superior Skills/Tactics: DM+2 (each)",
+			"bullet | Superior Numbers: DM+1/+3 (if 2x+)",
+			"bullet | Defender has no Marines: DM-2",
+			"bullet | Defender Anti-Hijack SW: DM+[Score]x2",
+			"bullet | Attacker has Breaching Tube: DM+1",
+			"fill | 1",
+			"property|PCs in Boarding Action | Roll a relevant Boarding Action skill. ±TC Effect adds to above DMs."
+		],
+    "icon": "space-suit",
+		"tags": [],
+		"card_width": "3in",
+		"card_height": "4.5in"
+	},
+	
+
+
+
+
+	{
+		"count": 1,
+		"color": "maroon",
+		"title": "BOARDING ACTION Results",
+		"icon_back": "spiky-field",
+		"contents": [
+			"section | <b>Boarding Action Results</b> (2D+DMs)",
+			"property | -7 or less: | Attackers soundly defeated and must retreat back to their ship or space. If they can't, they are killed or captured. (Defender's choice) (APCs 3D) If docked, Defender may immediately mount a new boarding action w/DM+4",
+			"property | -4 to -6: | Attackers are defeated and must retreat back to their ship or space. If they can't, they are killed or captured.(Defender's choice) (APCs 2D)",
+			"property | -1 to -3: | Fighting continues. Roll in 1D rnds w/Def DM+2. Boarded ship loses 2D Hull. (APCs 1D)",
+			"property | 0:  | Fighting continues. Roll again in 1D rounds.",
+			"property | 1 to 3: | Fighting continues. Roll in 1D rnds with Att DM+2. Boarded ship loses 2D Hull. (DPCs 1D)",
+			"property | 4 to 6: | Attackers are successful and gain control of the ship after another 2D rounds of pacification. Boarded ship loses 1D Hull.  Defenders are killed or captured. (Attacker's choice) (DPCs 2D)",
+			"property | 7 or more: | Attackers storm the enemy ship and take control of it immediately. Defenders are killed or captured.  (Attacker's choice) (DPCs 3D)",
+			"fill | 11",
+			"property | On Fail, PCs not Killed by Damage are Captured |<br><b>APC</b> = Attacking PC and <b>DPC</b> = Defending PC.  Boarding Action Damage <u>Ignores PC Armor</u>."
+
+		],
+    "icon": "space-suit",
+		"tags": [],
+		"card_width": "3in",
+		"card_height": "4.5in"
+	},
+
+
+
+
+
+
+	{
+		"count": 1,
+		"color": "black",
+		"title": "SHIP SW/HW Packages",
+		"icon_back": "spiky-field",
+		"contents": [
+			"fill | 1",
+			"subtitle | SHIP SOFTWARE  (On the Action Cards)",
+			"property | Evade (EV) 1-3: | Auto evades, DM-[Score] to attack it",
+			"property | Fire Control (FC) 1-5: | Auto fire [Score] Turrets per rnd -OR-  Gunners DM+[Score] -OR- Any combo",
+			"property | Auto-Repair (AR) 1-2: | Make [Score] repair rolls/rnd -OR-  DM+[Score] to Engr Repair rolls -OR-  Any combo. Ship must carry Repair Drones",
+			"property | Elect Warfare(EW) 1-3: | DM+[Score] to SensOps EW",
+			"property | Launch Soln (LS) 1-3: | DM+[Score] to Missile Attacks",
+			"property |  Anti Hijack (AH) 1-3: | DM+[Score]x2 vs Boarding Act",
+			"property | Point Defense (PD) 1-2: |  PD Bat & PD Gunners can defend a ship in Close(PD1) or Short(PD2) range",
+			"property |  Fire Control, Adv (AFC) 1-3: | Gunners DM+[Score] on all ships weapons",
+      "property | Battle Sys (BS) 1-3: | DM+[Score] to Tactics(Naval)",
+			"fill | 1",
+			"subtitle | SHIP HARDWARE (Not On Action Cards)",
+			"property | Sensor Stations: | Additional Sensor Operators",
+			"property | Signal Processing System: | DM+2(Jam DMx2) or +4",
+			"property | Forced Link: | Force Grapple and/or Tow a Ship",
+			"property | Trapped Airlock: | Attack Boarders (3D-8D)",
+			"property | Hardened System: | Immune to Ion Weapons",
+			"property | Radiation Shielding: | Hull Absorbs +500 rads",
+			"property | Reflec Hull: | Armor+3 vs. Laser (No Stealth Hull)",
+			"fill | 1"
+		],
+    "icon": "processor",
+		"tags": [],
+		"card_width": "3in",
+		"card_height": "4.5in"
+	},
+
+
+
+
+  {
+    "count": 1,
+    "color": "indigo",
+    "title": "VEHICLE OPS BASICS",
+    "icon_back": "spiky-field",
+    "contents": [
+      "fill | 1",
+      "section | Operator Skill Roll",
+      "property |Drive/Fly/Sea(Specialty,DEX) + Vehicle Agility| ±DMs",
+      "fill | 1",
+      "section| Vehicle Operator Actions Each Round (6s)",
+      "property | Follow Personal Combat Rules| 1 Significant Action, 1 Minor Action, Free Action, and Reactions. Same DMs",
+      "property | Vehicle Significant Actions | Operator may choose from list of <i>Significant Vehicle Actions</i> (Actions Card)",
+      "property | Maintain Control |  Operator must use a <i>Minor Action</i> to maintain control of the vehicle",
+      "property | Movement | Operator must use a <i>Free Action</i> to move the Vehicle its full Speed Band in hexes. Use a Stunt to move more or less",
+      "property | Adjust Speed | Operator may use a <i>Free Action</i> to change ±One Speed Band.  Use a Stunt to change by more than one",
+      "fill | 1",
+      "section| Vehicle DMs (Drive Skill Only)",
+      "property|Driving Off Road |  DM-2; Max Speed Band -2 without Off Road Vehicle Trait; Fail = Crit",
+      "property|Driving in Rough Terrain | Must have Off Road Vehicle Trait; DM-2; Max Speed Band -2; Fail = Crit",
+      "property|Vehicle Traits| In Rough Terrain: Tracked DM+4; ATV DM+2; Off-Road DM+1 ",
+      "fill | 1",
+      "section | Vehicle Damage and Critical Hits",
+      "property | Armor and Facing | Use armor of side facing attack",
+      "property | Roof/Floor Armor | Roof = half Side; Floor = half Rear",
+      "property | Critical Hit | Attack Effect 6+ or every 10% Hull Damage",
+      "property | Wrecked | When Hull = 0",
+      "fill | 11"
+    ],
+    "tags": [],
+    "icon": "apc",
+    "card_width": "3.5in",
+    "card_height": "5.5in"
+  },
+
+  {
+    "count": 1,
+    "color": "indigo",
+    "title": "VEHICLE OPS ACTIONS",
+    "icon_back": "spiky-field",
+    "contents": [
+      "subtitle | <center>Significant Vehicle Actions</center>",
+      "section | Dogfight!",
+      "property | Opp Skill vs. 1 Target in 1km | DM-1 per add'l target",
+      "property | Tie | only turret attacks allowed this round",
+      "property | Loser |  Gets DM-2 to Attacks this round ",
+      "property | Winner | gets following benefits this round:",
+      "bullet | Sets the fire arcs for Winner and Loser",
+      "bullet | DM+2 to Attacks",
+      "bullet | Skill Effect as +DM to Opposed Skill next round",
+      "fill | 1",
+      "section | Evade",
+      "property | Skill | Effect is Attack penalty To/From vehicle.",
+      "fill | 1",
+      "section | Maneuver",
+      "property | No Skill check | Choose one:",
+      "bullet | Move from one enemy fire arc into another one",
+      "bullet | Change the fire arc a single target is in",
+      "fill | 1",
+      "section | Stunt",
+      "property | Skill w/DM assigned by GM| Choose one:",
+      "bullet | Put target in an additional fire arc for a turn",
+      "bullet | Set up a Task Chain or Avoid an Obstacle",
+      "bullet | Do something dangerous or nearly impossible",
+      "fill | 1",
+      "section | Weave",
+      "property | Skill w/DM-1 to DM-6 | Fail = Crash (1D/SB) Pursuers must break off or roll same DM Skill to follow",
+      "fill | 1",
+      "section | Ram",
+      "property | Skill (-DM for Evade or Dodge) | to Ram vehicle, object, or person. 1D Damage per Speed Band difference. Crew take 25% Damage"
+    ],
+    "tags": [],
+    "icon": "apc",
+    "card_width": "3.5in",
+    "card_height": "5.5in"
+  },
+
+
+   {
+    "count": 1,
+    "color": "indigo",
+    "title": "VEHICLE GUNNER",
+    "icon_back": "spiky-field",
+    "contents": [
+      "subtitle | <center>Vehicle Firing Arcs</center>",
+      "picture | https://i.imgur.com/Mi4BhMV.png |100",
+      "fill | 1",
+      "section | Gunner Skill Roll",
+      "property |Heavy Weapons(Vehicle,DEX) | ±DMs",
+      "fill | 1",
+      "section | Vehicle Weapon Ranges",
+      "property |Values | Medium Range stated in Kilometers",
+      "property |Closed Vehicle Mounts| Cannot Fire at Close Range",
+      "property |Ranges | Close: 5%; Short: 25%; Med: Stated; Long: 2x; Extreme: 4x (or 1km without Scope Weapon Trait)",
+      "fill | 1",
+      "section| Vehicle Gunner Attack DMs",
+      "property|Vehicle as Target | DM+1 and DM+1 per full 10 Tons",
+      "property|Speed Delta| DM-1 per Speed Band Difference",
+      "property|Aim| DM+1 per Aim Minor action (max DM+6) ",
+      "property|Laser Sight| DM+1 if Aiming ",
+      "property|Range Short/Med/Long/Extreme| DM+1/+0/-2/-4",
+      "property|Target in Cover or in a Closed Vehicle| DM-2",
+      "property|Poor Light or Distracted| Bane",
+      "fill | 1",
+      "section| Vehicle Weapons (M Range, Dam, Mag, Traits)",
+      "property|Cannon| R:2k, 8D, Mag:30, Blast 10",
+      "property|Heavy Machine Gun|  R:1k, 4D Mag:100, Auto 3",
+      "property|Laser Cannon|  R:2.5k 1DD, Mag:∞, AP 10",
+      "property|Light Auto Cannon| R:1k, 6D, Mag:500, Auto 3"
+    ],
+    "tags": [],
+    "icon": "sentry-gun",
+    "card_width": "3.5in",
+    "card_height": "5.5in"
+  },
+
+
+   {
+    "count": 1,
+    "color": "indigo",
+    "title": "VEHICLE PASSENGERS",
+    "icon_back": "spiky-field",
+    "contents": [
+      "fill | 1",
+      "section | Passenger DMs and Rules",
+      "property |Small Arms | Add Vehicle TL to Armor vs. Small Arms",
+      "fill | 1",
+      "property | Closed Vehicle |",
+      "bullet | Provides Cover (DM-2) and Armor bonus",
+      "bullet |Occupants inside cannot be targeted unless visible",
+      "bullet |2 Passengers per Arc may fire from Civilian vehicles",
+      "bullet |1 Passenger per Arc may fire from Military vehicles",
+      "fill | 1",
+      "property | Open Vehicle |",
+      "bullet|No Cover or Armor bonus",
+      "bullet |All Passengers may attack in any direction",
+      "fill | 4",
+      "icon | bus | 70",
+      "fill | 4"
+    ],
+    "tags": [],
+    "icon": "bus",
+    "card_width": "3.5in",
+    "card_height": "5.5in"
+  },
+
+
+  {
+    "count": 1,
+    "color": "darkblue",
+    "title": "ENDCARD NO COMMA",
+    "icon_back": "spiky-field",
+    "contents": [
+      "property | other ship SW packages",
+			"property | Elect Warfare, Broad Spectrum (EB) 1: | Auto EW reaction on all enemy salvos at launch w/in Long Range",
+			"property | Battle Network (BN) 1-2: | Sensor Handoff at Med/Long Range",
+      "icon | move | 70"
+    ],
+    "tags": [],
+    "card_width": "3.5in",
+    "card_height": "5.5in"
+  }
+]
